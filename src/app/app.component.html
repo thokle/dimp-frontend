@@ -1,0 +1,32 @@
+<ng-container *ngFor="let b of blad">
+
+  <label>{{b.navn}}</label>
+  <label>{{b.bladID}}</label>
+  <input type="text" [value]="b.bladID" id="bladid">
+
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <mat-list *ngFor="let pl of b.placeringer" class="list-horizontal">
+        <mat-list-item>{{pl.betegnelse}}</mat-list-item>
+      </mat-list>
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+
+  <div  *ngFor="let pr of priser" style="margin-bottom: 50px;" >
+    <table style="width: 90%; background: aqua">
+      <tr><th>Blad Id</th><th colspan="1">Farve Max</th><th colspan="1">Farve Min</th><th colspan="1">Farvetillæg</th></tr>
+      <tr *ngFor="let p of pr" >
+        <td id="t_bladId"><input type="text" value="{{p.bladID}}"></td><td ><input id="t_farvemax" type="text" value="{{p.farveMax}}"></td><td><input id="t_farvemin"type="text" value="{{p.farveMin}}"></td>
+        <td ></td>
+      </tr>
+
+    </table>
+    <div >
+
+
+    </div>
+
+  </div>
+
+</ng-container>
