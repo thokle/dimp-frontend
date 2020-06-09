@@ -60,4 +60,15 @@ export class AppComponent {
   checkboxLabel(row?: Priser) {
 
   }
+
+  getRowData($row: any) {
+    const table: HTMLTableElement = document.querySelector("#table_blad");
+    const rows = table.tBodies[0].rows;
+
+    Array.from(rows).forEach((row,idx) => {
+      row.addEventListener('click', ev => {
+
+      });
+    });
+  }
 }
