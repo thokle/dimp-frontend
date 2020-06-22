@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {PriceWebService} from "../services/price-web.service";
 import { PriserComponent } from './priser/priser.component';
-import {RouterModule} from "@angular/router";
+import {RouterModule, RouterStateSnapshot} from "@angular/router";
 import {Location} from "@angular/common";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatListModule} from "@angular/material/list";
@@ -14,13 +14,16 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTableModule} from "@angular/material/table";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatButtonModule} from "@angular/material/button";
+import { KontakterComponent } from './kontakter/kontakter.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PriserComponent
+    PriserComponent,
+    KontakterComponent
   ],
     imports: [
         BrowserModule,
@@ -31,7 +34,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
         MatToolbarModule,
         MatTableModule,
         MatCheckboxModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        MatButtonModule
+
     ],
   providers: [PriceWebService, Location],
   bootstrap: [AppComponent]

@@ -1,46 +1,7 @@
-<ng-container *ngFor="let b of blad">
 
-  <label>{{b.navn}}</label>
-  <label>{{b.bladID}}</label>
-  <input type="text" [value]="b.bladID" id="bladid">
-
-  <mat-toolbar>
-    <mat-toolbar-row>
-      <mat-list *ngFor="let pl of b.placeringer" class="list-horizontal">
-        <mat-list-item>{{pl.betegnelse}}</mat-list-item>
-      </mat-list>
-    </mat-toolbar-row>
-
-  </mat-toolbar>
-
-  <div  *ngFor="let pr of priser" style="margin-bottom: 50px;" >
-    <table style="width: 90%; background: aqua" id="table_blad" >
-      <tr><th></th><th colspan="1">Farve Max</th><th colspan="1">Farve Min</th><th colspan="1">Farvetillæg</th></tr>
-      <tr *ngFor="let p of pr" >
-        <td><input type="text"  id="t_formatFra" value="{{p.formatFra}}"></td>
-        <td><input type="text" id="t_formatTil" value="{{p.formatTil}}"></td>
-        <td id="t_bladId"><input type="hidden" value="{{p.bladID}}"></td>
-        <td ><input id="t_farvemax" type="text" value="{{p.farveMax}}"></td>
-        <td><input id="t_farvemin"type="text" value="{{p.farveMin}}"></td>
-        <td ><input type="text" id="t_farvePris" value="{{p.farvePris}}"></td>
-        <td><input type="text" id="t_farve4Min" value="{{p.farve4Min}}"></td>
-        <td><input type="text" id="t_farve4max" value="{{p.farve4Max}}"></td>
-        <td><input type="text" id="t_farve4Pris" value="{{p.farve4Pris}}"></td>
-
-        <td><input type="text" id="t_mmPris" value="{{p.mmPris}}"></td>
-        <td><input type="text" value="{{p.placeringsNavn}}"></td>
-        <td><input type="hidden" id="t_placaringId" value="{{p.placeringID}}">
-          <input type="hidden" value="{{p.prislisteID}}">
-        </td>
-        <td><button id="update{{p.bladID}}" (click)="getRowData($event)"></button></td>
-      </tr>
-
-    </table>
-    <div >
-
-
-    </div>
-
-  </div>
-
+<ng-container *ngIf="isPriser">
+<app-priser [email]="email"></app-priser>
 </ng-container>
+<ng-container *ngIf="isKomtakter"><app-kontakter></app-kontakter>
+</ng-container>
+
