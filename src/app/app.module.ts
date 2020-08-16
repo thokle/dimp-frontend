@@ -16,6 +16,13 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import { KontakterComponent } from './kontakter/kontakter.component';
+import {KontaktService} from "../services/kontakt.service";
+import {NewPriserService} from "../services/new-priser.service";
+import { DeadlineComponent } from './deadline/deadline.component';
+import { DeadLine2Component } from './dead-line2/dead-line2.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -23,22 +30,27 @@ import { KontakterComponent } from './kontakter/kontakter.component';
   declarations: [
     AppComponent,
     PriserComponent,
-    KontakterComponent
+    KontakterComponent,
+    DeadlineComponent,
+    DeadLine2Component
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatListModule,
-        MatToolbarModule,
-        MatTableModule,
-        MatCheckboxModule,
-        MatFormFieldModule,
-        MatButtonModule
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatToolbarModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatInputModule,
+    ReactiveFormsModule
 
-    ],
-  providers: [PriceWebService, Location],
+  ],
+  providers: [PriceWebService, Location, KontaktService, NewPriserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

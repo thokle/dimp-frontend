@@ -1,61 +1,55 @@
-<h1>Pris compoent </h1><div *ngFor="let b of blad">
+<div>
+  <button  (click)="prevPage()">Prev</button>{{pagestart}}/{{maxNumber}}<button (click)="nextPage()" >next</button>
+</div>
+
+<h1>Pris compoent </h1><div *ngFor="let b of bladPaging">
   <div>
-    <label>{{b.navn}}</label>
+    <label>{{b.Navn}}</label>
   </div>
 
-  <mat-toolbar>
-    <mat-toolbar-row>
-      <mat-list *ngFor="let pl of b.placeringer" class="list-horizontal">
-        <mat-list-item>{{pl.betegnelse}}</mat-list-item>
-      </mat-list>
-    </mat-toolbar-row>
-
-  </mat-toolbar>
 
 
   <table style="width: 80%; background: lightskyblue; align-content: flex-start" id="prisTable" >
-    <tr><th style="align-content: flex-start">Format Fra</th><th>Format til</th><th>Farve Max</th><th>Farve Min</th><th>Farve Min</th><th>Farve Pris</th><th>Farve4Min</th><th>Farve4Max</th><th>Farve4Pris</th><th>mmPris</th><th>Placerings Navn</th></tr>
+    <tr><th >Format Fra</th><th>Format til</th><th>Farve Max</th><th>Farve Min</th><th>Farve Min</th><th>Farve Pris</th><th>Farve4Min</th><th>Farve4Max</th><th>Farve4Pris</th><th>mmPris</th><th>Placerings Navn</th></tr>
     <tr *ngFor="let p of b.tempPriser" id="row_table" >
       <td style="padding: 0px; margin: 0;">
-        <input type="text" id="{{p.bladID}}!formatFra"   style="width: 35px;" value="{{p.formatFra}}" (keyup.tab)="saveDataToArray(p.bladID+'!formatFra',p.bladID,$event, p.prislisteID, p.placeringID)" (keyup.enter)="saveDataToArray(p.bladID +'!formatFra',p.bladID,$event,  p.prislisteID, p.placeringID)">
+        <input type="text" id="{{p.bladID}}!formatFra"   style="width: 35px;" value="{{p.FormatFra}}" (keyup.tab)="saveDataToArray(p.bladID+'!formatFra',p.bladID,$event, p.PrislisteID, p.PlaceringID)" (keyup.enter)="saveDataToArray(p.bladID +'!formatFra',p.bladID,$event,  p.PrislisteID, p.PlaceringID)">
       </td>
 
       <td style="padding: 0px; margin: 0;">
-        <input type="text" id="{{p.bladID}}!formatTil"   style="width: 35px;" value="{{p.formatTil}}" (focusout)="saveDataToArray(p.bladID+'!formatTil',p.bladID,$event, p.prislisteID, p.placeringID)" (keyup.enter)="saveDataToArray(p.bladID +'!formatTil',p.bladID,$event,  p.prislisteID, p.placeringID)">
+        <input type="text" id="{{p.bladID}}!formatTil"   style="width: 35px;" value="{{p.FormatTil}}" (focusout)="saveDataToArray(p.bladID+'!formatTil',p.bladID,$event, p.PrislisteID, p.PlaceringID)" (keyup.enter)="saveDataToArray(p.bladID +'!formatTil',p.bladID,$event,  p.PrislisteID, p.PlaceringID)">
       </td>
 
 
       <input type="hidden"  value="{{p.bladID}}" >
 
       <td  style="padding: 0px; margin: 0px;">
-        <input id="{{p.bladID}}!farveMax" type="text"  style="width: 35px;" value="{{p.farveMax}}" (focusout)="saveDataToArray(p.bladID +'!farveMax',p.bladID,$event,  p.prislisteID, p.placeringID)" (keyup.enter)="saveDataToArray(p.bladID +'!!farveMax',p.bladID,$event,  p.prislisteID, p.placeringID)"></td>
+        <input id="{{p.bladID}}!farveMax" type="text"  style="width: 35px;" value="{{p.FarveMax}}" (focusout)="saveDataToArray(p.bladID +'!farveMax',p.bladID,$event,  p.PrislisteID, p.PlaceringID)" (keyup.enter)="saveDataToArray(p.bladID +'!!farveMax',p.bladID,$event,  p.PrislisteID, p.PlaceringID)"></td>
       <td style="padding: 0px; margin: 0;" >
 
-        <input id="{{p.bladID}}!farveMin" type="text"  style="width: 35px;" value="{{p.farveMin}}" (focusout)="saveDataToArray(p.bladID +'!farveMin',p.bladID,$event, p.prislisteID, p.placeringID)" (keyup.enter)="saveDataToArray(p.bladID +'farveMin',p.bladID,$event, p.prislisteID, p.placeringID)"></td>
+        <input id="{{p.bladID}}!farveMin" type="text"  style="width: 35px;" value="{{p.FarveMin}}" (focusout)="saveDataToArray(p.bladID +'!farveMin',p.bladID,$event, p.PrislisteID, p.PlaceringID)" (keyup.enter)="saveDataToArray(p.bladID +'farveMin',p.bladID,$event, p.PrislisteID, p.PlaceringID)"></td>
       <td style="padding: 0px; margin: 0;" >
 
-        <input type="text" id="{{p.bladID}}!farvePris"  style="width: 35px;" value="{{p.farvePris}}" (focusout)="saveDataToArray(p.bladID +'!farvePris',p.bladID,$event, p.prislisteID, p.placeringID)" (keyup.enter)="saveDataToArray(p.bladID +'!farvePris',p.bladID,$event, p.prislisteID, p.placeringID)"></td>
+        <input type="text" id="{{p.bladID}}!farvePris"  style="width: 35px;" value="{{p.FarvePris}}" (focusout)="saveDataToArray(p.bladID +'!farvePris',p.bladID,$event, p.PrislisteID, p.PlaceringID)" (keyup.enter)="saveDataToArray(p.bladID +'!farvePris',p.bladID,$event, p.PrislisteID, p.PlaceringID)"></td>
       <td style="padding: 0px; margin: 0;">
 
-        <input type="text" id="{{p.bladID}}!farve4Min"  style="width: 35px;" value="{{p.farve4Min}}" (focusout)="saveDataToArray(p.bladID +'!farve4Min',p.bladID,$event, p.prislisteID, p.placeringID)" (keyup.enter)="saveDataToArray(p.bladID +'!farve4Min',p.bladID,$event,  p.prislisteID, p.placeringID)"></td>
+        <input type="text" id="{{p.bladID}}!farve4Min"  style="width: 35px;" value="{{p.Farve4Min}}" (focusout)="saveDataToArray(p.bladID +'!farve4Min',p.bladID,$event, p.PrislisteID, p.PlaceringID)" (keyup.enter)="saveDataToArray(p.bladID +'!farve4Min',p.bladID,$event,  p.PrislisteID, p.PlaceringID)"></td>
       <td style="padding: 0px; margin: 0;">
 
-        <input type="text" id="{{p.bladID}}!farve4max"  style="width: 35px;" value="{{p.farve4Max}}" (focusout)="saveDataToArray(p.bladID +'!farve4Max',p.bladID,$event,  p.prislisteID, p.placeringID)" (keyup.enter)="saveDataToArray(p.bladID +'!farve4Max',p.bladID,$event, p.prislisteID, p.placeringID)"></td>
+        <input type="text" id="{{p.bladID}}!farve4max"  style="width: 35px;" value="{{p.Farve4Max}}" (focusout)="saveDataToArray(p.bladID +'!farve4Max',p.bladID,$event,  p.PrislisteID, p.PlaceringID)" (keyup.enter)="saveDataToArray(p.bladID +'!farve4Max',p.bladID,$event, p.PrislisteID, p.PlaceringID)"></td>
       <td style="padding: 0px; margin: 0;">
 
-        <input type="text" id="{{p.bladID}}!farve4Pris"  style="width: 35px;" value="{{p.farve4Pris}}" (focusout)="saveDataToArray(p.bladID +'!farve4Pris',p.bladID,$event, p.prislisteID, p.placeringID)" (keyup.enter)="saveDataToArray(p.bladID +'!farve4Pris',p.bladID,$event,  p.prislisteID, p.placeringID)">
+        <input type="text" id="{{p.bladID}}!farve4Pris"  style="width: 35px;" value="{{p.Farve4Pris}}" (focusout)="saveDataToArray(p.bladID +'!farve4Pris',p.bladID,$event, p.PrislisteID, p.PlaceringID)" (keyup.enter)="saveDataToArray(p.bladID +'!farve4Pris',p.bladID,$event,  p.PrislisteID, p.PlaceringID)">
 
       </td>
 
       <td style="padding: 0px; margin: 0;">
-        <input type="text" id="{{p.bladID}}mmPris" value="{{p.mmPris}}"   style="width: 35px;" (focusout)="saveDataToArray('mmPris',p.bladID,$event, p.prislisteID, p.placeringID)" (keyup.enter)="saveDataToArray('mmPris',p.bladID,$event,  p.prislisteID, p.placeringID)"></td>
-      <td>{{p.placeringsNavn}}</td>
-      <td
-
-      ><input type="hidden" id="placeringID" value="{{p.placeringID}}">
-        <input type="hidden" value="{{p.prislisteID}}">
+        <input type="text" id="{{p.bladID}}mmPris" value="{{p.mmPris}}"   style="width: 35px;" (focusout)="saveDataToArray('mmPris',p.bladID,$event, p.PrislisteID, p.PlaceringID)" (keyup.enter)="saveDataToArray('mmPris',p.bladID,$event,  p.PrislisteID, p.PlaceringID)"></td>
+      <td>{{p.PlaceringsNavn}}</td>
+      <td  ><input type="hidden" id="PlaceringID" value="{{p.PlaceringID}}">
+        <input type="hidden" value="{{p.PrislisteID}}">
       </td>
-      <td><button id="update{{p.bladID}}" (click)="Godkend('update' ,p.bladID,$event, p.prislisteID, p.placeringID)">Godkend</button></td>
+      <td><button id="update{{p.bladID}}" (click)="Godkend('update' ,p.bladID,$event, p.PrislisteID, p.PlaceringID)">Godkend</button></td>
     </tr>
 
   </table>

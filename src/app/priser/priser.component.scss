@@ -1,0 +1,32 @@
+mat-nav-list.list-horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+
+table {
+  width: 80%;
+}
+
+#prisTable {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#prisTable td, #prisTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#prisTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#prisTable tr:hover {background-color: #ddd;}
+
+#prisTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: lightgray;
+  color: white;
+}

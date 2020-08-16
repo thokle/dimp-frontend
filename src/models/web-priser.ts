@@ -2,19 +2,19 @@
 
   export interface Priser {
     bladID: number;
-    farve4Max: number;
-    farve4Min: number;
-    farve4Pris: number;
-    farveMax: number;
-    farveMin: number;
-    farvePris: number;
-    formatFra: number;
-    formatTil: number;
+    Farve4Max: number;
+    Farve4Min: number;
+    Farve4Pris: number;
+    FarveMax: number;
+    FarveMin: number;
+    FarvePris: number;
+    FormatFra: number;
+    FormatTil: number;
     mmPris: number;
-    placeringID: number;
-    prislisteID: number;
-    year: number;
-    placeringsNavn: string;
+    PlaceringID: number;
+    PrislisteID: number;
+    Year: number;
+    PlaceringsNavn: string;
   }
 
   export interface Placeringer {
@@ -23,7 +23,7 @@
 
   export interface Blad {
     bladID: number;
-    navn: string;
+    Nbgavn: string;
     tempPriser: Priser[];
     placeringer: Placeringer[];
   }

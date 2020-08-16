@@ -1,4 +1,8 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
+import {KontaktService} from "../../services/kontakt.service";
+import {StamBladUdSendingKontakt} from "../../models/stam-blad-ud-sendingkontakt";
+
+
 
 @Component({
   selector: 'app-kontakter',
@@ -7,12 +11,23 @@ import {Component, Inject, Input, OnInit} from '@angular/core';
 })
 export class KontakterComponent implements OnInit {
 
+  kontaker: StamBladUdSendingKontakt[];
 
   @Input()
-  public  email: string;
-  constructor() { }
+  public  mediePlan: number;
+  constructor(private ks: KontaktService ) {
 
-  ngOnInit(): void {
   }
 
+  ngOnInit(): void {
+    this.UpdateKontakter(this.mediePlan);
+  }
+
+
+  private  UpdateKontakter(id: number){
+    this.ks.GetStamBladUdsendingkontakterById(id).subscribe(value => {
+      this.kontaker = value;
+      console.log(value);
+    })
+  }
 }

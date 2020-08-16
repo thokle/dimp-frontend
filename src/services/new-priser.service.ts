@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import {environment} from "../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Blad} from "../models/web-priser";
-import {Price} from "../models/update-priser";
+import {Email} from "../models/email";
 const headerDict = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
@@ -13,31 +12,23 @@ const headerDict = {
 const requestOptions = {
   headers: new Headers(headerDict),
 };
-
 @Injectable({
   providedIn: 'root'
 })
-export class PriceWebService {
+export class NewPriserService {
+
+  private  bastUrl = environment.url;
+  constructor(private  http: HttpClient) {
 
 
-
-  private  baseurl = environment.url;
-  constructor(private  http: HttpClient) { }
-
-
-  public GetBlade(email: string): Observable<Blad[]> {
-    let url = this.baseurl + 'webprice/'+email;
-    return this.http.get<Blad[]>(url).pipe();
   }
 
 
-  public UpDatePrice(updataPrice: Price){
+  public  UpdateNewPriser(email: string):Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'});
-
-    let url = this.baseurl + 'webprice';
-    return this.http.post(url, JSON.stringify(updataPrice), {headers: headers}).pipe();
-
-
+    let url = this.bastUrl + "newPriser";
+ let jsonEmail: Email = {email: email}
+    return  this.http.post(url, JSON.stringify(jsonEmail),{headers: headers});
   }
 }

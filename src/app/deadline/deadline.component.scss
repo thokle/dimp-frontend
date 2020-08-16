@@ -1,3 +1,4 @@
+
 mat-nav-list.list-horizontal {
   display: flex;
   flex-direction: row;
@@ -8,25 +9,25 @@ table {
   width: 80%;
 }
 
-#kontaktTable {
+#prisTable {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 
-#kontaktTable td, #kontaktTable th {
+#prisTable td, #prisTable th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#kontaktTable tr:nth-child(even){background-color: #f2f2f2;}
+#prisTable tr:nth-child(even){background-color: #f2f2f2;}
 
-#kontaktTable tr:hover {background-color: #ddd;}
+#prisTable tr:hover {background-color: #ddd;}
 
-#kontaktTable th {
+#prisTable th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
+  background-color: lightgray;
   color: white;
 }
