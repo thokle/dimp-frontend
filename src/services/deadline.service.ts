@@ -18,4 +18,10 @@ export class DeadlineService {
     return  this.http.get<Deadline[]>(url);
 
 }
+
+  public  Post(deadline: Deadline): Observable<any>{
+    const  url = this.baseUrl + 'deadline';
+    return  this.http.post(url, JSON.stringify(deadline));
+
+  }
 }

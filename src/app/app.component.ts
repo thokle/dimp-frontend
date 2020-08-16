@@ -44,12 +44,14 @@ export class AppComponent implements  OnInit {
         this.isPriser = false;
         this.isKomtakter = true;
       } else if (value.has('deadlines')){
+        this.bladid = Number(value.get('deadlines'));
         this.isPriser= false;
         this.isKomtakter  = false;
         this.isDeadLine2 = false;
         this.isDeadline1 = true;
       }
       else if (value.has('deadlines2')){
+        this.bladid = Number(value.get('deadlines2'));
         this.isPriser= false;
         this.isKomtakter  = false;
         this.isDeadLine2 = true;

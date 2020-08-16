@@ -16,57 +16,72 @@ bladid;
 type
 
 
-  pLlstUdgivelseUge1;
-  pLlstOrdreUge1;
-  pLlstOrdreTidUge1;
-  pLlstMaterialeUge1;
-  pLlstMaterialeTidUge1;
+  pLlstUdgivelseUge1 = 0;
+  pLlstOrdreUge1= 0;
+  pLlstOrdreTidUge1='';
+  pLlstMaterialeUge1=0;
+  pLlstMaterialeTidUge1='';
+  pLlstUge1='';
 
-  pLlstUge1;
-  pLlstUdgivelseUge2;
-  pLlstOrdreUge2;
-  pLlstOrdreTidUge2;
-  pLlstMaterialeUge2;
+  pLlstUdgivelseUge2=0;
+  pLlstOrdreUge2=0;
+  pLlstOrdreTidUge2='';
+  pLlstMaterialeUge2=0;
+  pLlstMaterialeTidUge2='';
+  pLlstUge2='';
 
-  pLlstMaterialeTidUge2;
-  pLlstUge2;
-  pLlstUdgivelseUge3;
-  pLlstOrdreUge3;
-  pLlstOrdreTidUge3;
-  pLlstMaterialeUge3;
-  pLlstMaterialeTidUge3;
-  pLlstUge3;
-  pLlstUdgivelseUge4;
-  pLlstOrdreUge4;
-  pLlstOrdreTidUge4;
-  pLlstMaterialeUge4;
-  pLlstMaterialeTidUge4;
-  pLlstUge4;
-  pLlstOrdreUge5;
-  pLlstOrdreTidUge5;
-  pLlstUdgivelseUge5
-  pLlstMaterialeUge5;
-  pLlstMaterialeTidUge5;
-  pLlstUge5;
-  pLlstUdgivelseUge6;
-  pLlstOrdreUge6;
-  pLlstOrdreTidUge6;
-  pLlstMaterialeUge6;
-  pLlstMaterialeTidUge6;
-  pLlstUge6;
-  pLlstUdgivelseUge7;
-  pLlstOrdreUge7;
-  pLlstOrdreTidUge7;
-  pLlstMaterialeUge7;
-  pLlstMaterialeTidUge7;
-  pLlstUge7;
-  pLlstUdgivelseUge8;
-  pLlstOrdreUge8;
-  pLlstOrdreTidUge8;
-  pLlstMaterialeUge8;
-  pLlstMaterialeTidUge8;
-  pLlstUge8;
+  pLlstUdgivelseUge3=0;
+  pLlstOrdreUge3=0;
+  pLlstOrdreTidUge3='';
+  pLlstMaterialeUge3=0;
+  pLlstMaterialeTidUge3='';
+  pLlstUge3='';
 
+
+  pLlstUdgivelseUge4=0;
+  pLlstOrdreUge4=0;
+  pLlstOrdreTidUge4='';
+  pLlstMaterialeUge4=0;
+  pLlstMaterialeTidUge4='';
+  pLlstUge4='';
+
+  pLlstOrdreUge5=0;
+  pLlstOrdreTidUge5='';
+  pLlstUdgivelseUge5=0;
+  pLlstMaterialeUge5=0;
+  pLlstMaterialeTidUge5='';
+  pLlstUge5='';
+
+
+  pLlstUdgivelseUge6=0;
+  pLlstOrdreUge6=0;
+  pLlstOrdreTidUge6='';
+  pLlstMaterialeUge6=0;
+  pLlstMaterialeTidUge6='';
+  pLlstUge6='';
+
+  pLlstUdgivelseUge7=0;
+  pLlstOrdreUge7=0;
+  pLlstOrdreTidUge7='';
+  pLlstMaterialeUge7=0;
+  pLlstMaterialeTidUge7='';
+  pLlstUge7='';
+
+
+  pLlstUdgivelseUge8=0;
+  pLlstOrdreUge8=0;
+  pLlstOrdreTidUge8='';
+  pLlstMaterialeUge8=0;
+  pLlstMaterialeTidUge8='';
+  pLlstUge8='';
+pLUdkommer1 = false;
+  pLUdkommer2 = false;
+  pLUdkommer3= false;
+  pLUdkommer4= false;
+  pLUdkommer5= false;
+  pLUdkommer6= false;
+  pLUdkommer7= false;
+  pLUdkommer8= false;
   list1: Deadline[] = [];
   list2: Deadline[] = [];
   list3: Deadline[] = [];
@@ -119,6 +134,16 @@ type
      lstMaterialeUge8:'',
      lstMaterialeTidUge8:'',
      lstUge8:'',
+     chk1:'',
+     chk2:'',
+     chk3:'',
+     chk4:'',
+     chk5:'',
+     chk6:'',
+     chk7:'',
+     chk8:'',
+
+
     });
 
   }
@@ -126,87 +151,127 @@ type
   ngOnInit(): void {
     this.ds.GetDeadlimes(this.bladid,  this.type).subscribe(ds => {
       this.deadline = ds;
-      this.pLlstUdgivelseUge1;
-      this.pLlstOrdreUge1;
-      this.pLlstOrdreTidUge1;
-      this.pLlstMaterialeUge1;
-      this.pLlstMaterialeTidUge1;
-      this.pLlstUge1;
+
+      ds.forEach( d => {
+        this.pLlstUdgivelseUge1 =  d.UdgivelsesDato;
+        this.pLlstOrdreUge1 = d.OrdreDeadline;
+        this.pLlstOrdreTidUge1 =  d.OrdreTid;
+        this.pLlstMaterialeUge1 = d.MaterialeDeadline;
+        this.pLlstMaterialeTidUge1 = d.MaterialeTid;
+        this.pLlstUge1 = d.Uge;
+        this.pLUdkommer1 = d.UdkommerIkke
+      });
+
 
     });
 this.ds.GetDeadlimes(this.bladid, 2).subscribe( ds => {
   this.list1 = ds;
-  this.pLlstUdgivelseUge2;
-  this.pLlstOrdreUge2;
-  this.pLlstOrdreTidUge2;
-  this.pLlstMaterialeUge2;
-  this.pLlstMaterialeTidUge2;
-  this.pLlstUge2;
+  ds.forEach( d => {
+
+    this.pLlstUdgivelseUge2 = d.UdgivelsesDato;
+    this.pLlstOrdreUge2 = d.OrdreDeadline;
+    this.pLlstOrdreTidUge2 = d.OrdreTid;
+    this.pLlstMaterialeUge2 = d.MaterialeDeadline;
+    this.pLlstMaterialeTidUge2 = d.MaterialeTid;
+    this.pLlstUge2 = d.Uge;
+    this.pLUdkommer2 = d.UdkommerIkke;
+
+  });
+
 
 });
 
     this.ds.GetDeadlimes(this.bladid, 3).subscribe( ds => {
       this.list2 = ds;
+ds.forEach(d =>{
 
-      this.pLlstUdgivelseUge3;
-      this.pLlstOrdreUge3;
-      this.pLlstOrdreTidUge1;
-      this.pLlstMaterialeUge1;
-      this.pLlstMaterialeTidUge1;
-      this.pLlstUge1;
+  this.pLlstUdgivelseUge3 = d.UdgivelsesDato;
+  this.pLlstOrdreUge3 = d.OrdreDeadline;
+  this.pLlstOrdreTidUge3 = d.OrdreTid;
+  this.pLlstMaterialeUge3 = d.MaterialeDeadline;
+  this.pLlstMaterialeTidUge3 = d.MaterialeTid;
+  this.pLlstUge3 = d.Uge;
+  this.pLUdkommer3 = d.UdkommerIkke;
+
+});
+
     });
 
     this.ds.GetDeadlimes(this.bladid, 4).subscribe( ds => {
       this.list3 = ds;
-      this.pLlstUdgivelseUge1;
-      this.pLlstOrdreUge1;
-      this.pLlstOrdreTidUge1;
-      this.pLlstMaterialeUge1;
-      this.pLlstMaterialeTidUge1;
-      this.pLlstUge1;
+      ds.forEach(d =>{
+
+        this.pLlstUdgivelseUge4 = d.UdgivelsesDato;
+        this.pLlstOrdreUge4 = d.OrdreDeadline;
+        this.pLlstOrdreTidUge4 = d.OrdreTid;
+        this.pLlstMaterialeUge4 = d.MaterialeDeadline;
+        this.pLlstMaterialeTidUge4 = d.MaterialeTid;
+        this.pLlstUge4 = d.Uge;
+        this.pLUdkommer4 = d.UdkommerIkke;
+
+      });
 
     });
 
     this.ds.GetDeadlimes(this.bladid, 5).subscribe( ds => {
       this.list4 = ds;
-      this.pLlstUdgivelseUge1;
-      this.pLlstOrdreUge1;
-      this.pLlstOrdreTidUge1;
-      this.pLlstMaterialeUge1;
-      this.pLlstMaterialeTidUge1;
-      this.pLlstUge1;
+      ds.forEach(d =>{
+
+        this.pLlstUdgivelseUge5 = d.UdgivelsesDato;
+        this.pLlstOrdreUge5 = d.OrdreDeadline;
+        this.pLlstOrdreTidUge5 = d.OrdreTid;
+        this.pLlstMaterialeUge5 = d.MaterialeDeadline;
+        this.pLlstMaterialeTidUge5 = d.MaterialeTid;
+        this.pLlstUge5 = d.Uge;
+        this.pLUdkommer5 = d.UdkommerIkke;
+
+      });
     });
 
     this.ds.GetDeadlimes(this.bladid, 6).subscribe( ds => {
       this.list5 = ds;
-      this.pLlstUdgivelseUge1;
-      this.pLlstOrdreUge1;
-      this.pLlstOrdreTidUge1;
-      this.pLlstMaterialeUge1;
-      this.pLlstMaterialeTidUge1;
-      this.pLlstUge1;
+      ds.forEach(d =>{
+
+        this.pLlstUdgivelseUge6 = d.UdgivelsesDato;
+        this.pLlstOrdreUge6 = d.OrdreDeadline;
+        this.pLlstOrdreTidUge6 = d.OrdreTid;
+        this.pLlstMaterialeUge6 = d.MaterialeDeadline;
+        this.pLlstMaterialeTidUge6 = d.MaterialeTid;
+        this.pLlstUge6 = d.Uge;
+        this.pLUdkommer6 = d.UdkommerIkke;
+
+      });
 
     });
 
     this.ds.GetDeadlimes(this.bladid, 7).subscribe( ds => {
       this.list6 = ds;
-      this.pLlstUdgivelseUge1;
-      this.pLlstOrdreUge1;
-      this.pLlstOrdreTidUge1;
-      this.pLlstMaterialeUge1;
-      this.pLlstMaterialeTidUge1;
-      this.pLlstUge1;
+      ds.forEach(d =>{
 
+        this.pLlstUdgivelseUge7 = d.UdgivelsesDato;
+        this.pLlstOrdreUge7 = d.OrdreDeadline;
+        this.pLlstOrdreTidUge7 = d.OrdreTid;
+        this.pLlstMaterialeUge7 = d.MaterialeDeadline;
+        this.pLlstMaterialeTidUge7 = d.MaterialeTid;
+        this.pLlstUge7 = d.Uge;
+        this.pLUdkommer7 = d.UdkommerIkke;
+
+      });
     });
 
     this.ds.GetDeadlimes(this.bladid, 8).subscribe( ds => {
       this.list7= ds;
-      this.pLlstUdgivelseUge1;
-      this.pLlstOrdreUge1;
-      this.pLlstOrdreTidUge1;
-      this.pLlstMaterialeUge1;
-      this.pLlstMaterialeTidUge1;
-      this.pLlstUge1;
+      ds.forEach(d =>{
+
+        this.pLlstUdgivelseUge8 = d.UdgivelsesDato;
+        this.pLlstOrdreUge8 = d.OrdreDeadline;
+        this.pLlstOrdreTidUge8 = d.OrdreTid;
+        this.pLlstMaterialeUge8 = d.MaterialeDeadline;
+        this.pLlstMaterialeTidUge8 = d.MaterialeTid;
+        this.pLlstUge8 = d.Uge;
+        this.pLUdkommer8 = d.UdkommerIkke;
+
+      });
 
     });
 
