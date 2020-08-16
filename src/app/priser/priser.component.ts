@@ -4,6 +4,9 @@ import {PriceWebService} from "../../services/price-web.service";
 import {Blad, Placeringer, Priser} from "../../models/web-priser";
 import {SelectionModel} from "@angular/cdk/collections";
 import {Location} from "@angular/common";
+import {concatMap} from "rxjs/operators";
+import {Price} from "../../models/update-priser";
+import {NewPriserService} from "../../services/new-priser.service";
 
 @Component({
   selector: 'app-priser',
@@ -12,37 +15,72 @@ import {Location} from "@angular/common";
 })
 export class PriserComponent implements OnInit {
 
-  @Input()
-  public  email: string;
 
 
 
   blad: Blad[]
+  bladPaging: Blad[]
+  pagestart = 0;
+  pageend = 10;
+  maxNumber = 0;
+  toPage = 0;
   placeringer: Placeringer[];
   priser: Priser[][] = [[]];
   updatePriser: Priser[];
+  stambladEmail='';
+  canPrev = false;
+  canNext= true;
   displayedColumns: string[] = ['farve4Max', 'farve4Min', 'farveMax', 'farveMin', 'farvePris', 'formatFra', 'formatTil', 'mmPris', 'placeringID', 'prislisteID', 'år', 'placeringsNavn'];
 
   selection = new SelectionModel<Priser>(true, []);
 
   bladId: any;
+  @Input()
+  public  email;
 
-  constructor(private route: ActivatedRoute, private location: Location, private  service: PriceWebService) {
-    route.queryParamMap.subscribe(value => {
-      service.GetBlade(this.email).subscribe(value1 => {
-        this.blad = value1;
+  constructor(private  service: PriceWebService, private  newPriserService: NewPriserService) {
 
 
-      });
+
+  }
+
+  upDatePriser(email: string){
+    this.service.GetBlade(email).subscribe(value1 => {
+      console.log(value1);
+      this.blad = value1;
+this.bladPaging =  value1.slice(this.pagestart,this.pageend);
+this.maxNumber = value1.length;
     });
   }
+setBlad() {
+  this.blad = this.blad;
+}
+consoleLog(){
+  console.log(this.blad);
+  console.log(this.bladPaging);
+}
+  nextPage() {
 
-  isAllSelected() {
+    this.canPrev = true;
+    if (this.pageend + 10 > this.blad.length) {
+      this.setBlad();
+      this.bladPaging = this.blad.slice(this.pagestart += 10, this.blad.length);
+      this.canNext = false;
 
-  }
-
-  masterToggle() {
-
+  this.consoleLog();
+    } else {
+      this.setBlad();
+      this.blad = this.blad;
+      this.bladPaging =  this.blad.slice(this.pagestart += 10, this.pageend += 10);
+      this.consoleLog();
+    }
+    }
+  prevPage() {
+    this.setBlad();
+    if (!this.pagestart) {
+      this.bladPaging  = this.blad.slice(this.pagestart -= 10, this.pageend-=10)
+    }
+    this.bladPaging  = this.blad.slice(this.pagestart -= 10, this.pageend-=10)
   }
 
   highlight(row, evt): void {
@@ -77,34 +115,34 @@ export class PriserComponent implements OnInit {
 
 
         const bladred = p.tempPriser.filter(value =>
-          Number(value.bladID) == Number(bladid) && Number(value.prislisteID) == Number(prislisteId) && Number(value.placeringID) == Number(placerindId)
+          Number(value.bladID) == Number(bladid) && Number(value.PrislisteID) == Number(prislisteId) && Number(value.PlaceringID) == Number(placerindId)
         );
 
         const updataPris = bladred[0];
         const index = p.tempPriser.indexOf(updataPris);
         switch (name) {
           case 'formatFra':
-            updataPris.formatFra = Number(html);
+            updataPris.FormatFra = Number(html);
             break;
           case 'formatTil':
-            updataPris.formatTil = Number(html);
+            updataPris.FormatTil = Number(html);
           case 'farveMin':
-            updataPris.farveMin = Number(html);
+            updataPris.FarveMin = Number(html);
             break;
           case 'farvePris':
-            updataPris.farvePris = Number(html);
+            updataPris.FarvePris = Number(html);
             break;
           case 'farveMax':
-            updataPris.farveMax = Number(html);
+            updataPris.FarveMax = Number(html);
             break;
           case 'farve4Min':
-            updataPris.farve4Min = Number(html);
+            updataPris.Farve4Min = Number(html);
             break;
           case 'farve4Max':
-            updataPris.farve4Max = Number(html);
+            updataPris.Farve4Max = Number(html);
             break;
           case 'farve4Pris':
-            updataPris.farve4Pris = Number(html);
+            updataPris.Farve4Pris = Number(html);
             break;
           case 'mmPris':
             updataPris.mmPris = Number(html);
@@ -120,27 +158,21 @@ export class PriserComponent implements OnInit {
   AllOkay() {
     this.blad.forEach(value => {
       value.tempPriser.forEach(pris => {
-        this.service.UpDatePrice({
-          Bladid: pris.bladID,
-          farve4Max: pris.farve4Max,
-          farve4Min: pris.farve4Min,
-          farve4Pris: pris.farve4Pris,
-          farveMax: pris.farveMax,
-          farveMin: pris.farveMin,
-          farvePris: pris.farvePris,
-          formatFra: pris.formatFra,
-          formatTil: pris.formatTil,
-          mmPris: pris.mmPris,
-          placeringID: pris.placeringID,
-          placeringsNavn: pris.placeringsNavn,
-          prislisteID: pris.prislisteID,
-          year: pris.year
-        }).pipe().subscribe(value1 => {
+        let updatePris: Price = { priceWeb: {bladID: pris.bladID, ControlNavn: '',  Farve4Max: pris.Farve4Max, Farve4Min: pris.Farve4Min, Farve4Pris: pris.Farve4Pris, FarveMax: pris.FarveMax,
+            FarveMin: pris.FarveMin, FarvePris:pris.FarvePris, FormatFra: pris.FormatFra, FormatTil: pris.FormatTil, mmPris: pris.mmPris , PlaceringID: pris.PlaceringID, PrislisteID: pris.PlaceringID, År: pris.Year} };
+        this.service.UpDatePrice(
+             updatePris    ).pipe().subscribe(value1 => {
         }, error => {
           console.log(error);
+        },()=> {
+
         });
       });
-    })
+    });
+
+    this.newPriserService.UpdateNewPriser(this.email).subscribe(s=> {
+
+    });
   }
 
   Godkend(update: string, bladID: number, $event: any, prislisteID: number, placeringID: number) {
@@ -150,6 +182,7 @@ export class PriserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.upDatePriser(this.email);
+    console.log('email  ' + this.email);
   }
 }

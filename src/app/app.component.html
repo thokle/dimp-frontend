@@ -1,8 +1,17 @@
 
+
+<ng-container  *ngIf="isKomtakter">
+  <app-kontakter [mediePlan]="mediePlanNr"></app-kontakter>
+</ng-container>
+
 <ng-container *ngIf="isPriser">
-<app-priser [email]="email"></app-priser>
-
-</ng-container>
-<ng-container *ngIf="isKomtakter"><app-kontakter></app-kontakter>
+  <app-priser [email]="stamBladEmail"></app-priser>
 </ng-container>
 
+<ng-container *ngIf="isDeadline1">
+  <app-deadline [bladid]="bladid" [type]="type"> </app-deadline>
+</ng-container>
+
+<ng-container *ngIf="isDeadLine2">
+  <app-dead-line2 ></app-dead-line2>
+</ng-container>

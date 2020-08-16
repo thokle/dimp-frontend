@@ -1,1 +1,12 @@
 <p>kontakter works!</p>
+<table id="kontaktTable">
+  <tr *ngFor="let k of kontaker">
+    <td>{{k.BladId}}</td>
+    <td>{{k.Title}}</td>
+    <td>{{k.Name}}</td>
+    <td>{{k.Email}}</td>
+<td>{{k.KontaktType}}</td>
+    <td>{{k.telefonnummer}}</td>
+  </tr>
+
+</table>
