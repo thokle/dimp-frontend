@@ -15,7 +15,7 @@ bladid;
 @Input()
 type
 
-
+  staus:string[] = [];
   pLlstUdgivelseUge1 = 0;
   pLlstOrdreUge1= 0;
   pLlstOrdreTidUge1='';
@@ -105,6 +105,12 @@ pLUdkommer1 = false;
      lstMaterialeUge2:'',
      lstMaterialeTidUge2:'',
      lstUge2:'',
+     lstUdgivelseUge3:'',
+     lstOrdreUge3:'',
+     lstOrdreTidUge3:'',
+     lstMaterialeUge3:'',
+     lstMaterialeTidUge3:'',
+     lstUge3:'',
      lstUdgivelseUge4:'',
      lstOrdreUge4:'',
      lstOrdreTidUge4:'',
@@ -277,7 +283,113 @@ ds.forEach(d =>{
 
   }
 
+  /**
+   *
+   *   SqlComm.CommandText = "INSERT INTO tblWebUdgivelse (BladID, Linje, Uge, UdgivelsesDato, OrdreDeadline, OrdreTid, MaterialeDeadline, MaterialeTid, UdkommerIkke) VALUES (" & BladID.ToString() + ", 1,'" & lstUge1.SelectedItem.ToString() & "'," + lstUdgivelseUge1.SelectedIndex.ToString() + "," + lstOrdreUge1.SelectedIndex.ToString() + ",'" + lstOrdreTidUge1.SelectedItem.ToString() + "'," + lstMaterialeUge1.SelectedIndex.ToString() + ",'" + lstMaterialeTidUge1.SelectedItem.ToString() + "'," + IIf(chkKommerIkke1.Checked, "1", "0") + ")"
+   * @constructor
+   */
   OpretUge(){
+   let lstUdgivelseUge1 = this.fg.get('lstUdgivelseUge1').value;
+   let lstOrdreUge1 =  this.fg.get('lstOrdreUge1').value;
+   let lstOrdreTidUge1=  this.fg.get('lstOrdreTidUge1').value;
+    let lstMaterialeUge1 = this.fg.get('lstMaterialeUge1').value;
+  let lstMaterialeTidUge1 =   this.fg.get('lstMaterialeTidUge1').value;
+  let lstUge1 =   this.fg.get('lstUge1').value;
+    let chk1 =   this.fg.get('chk1').value;
+
+
+  let update1: Deadline = {BladId: this.bladid ,   UdkommerIkke:chk1, Uge:lstUge1, MaterialeTid: lstMaterialeTidUge1, MaterialeDeadline: lstMaterialeUge1, OrdreTid:lstOrdreTidUge1, OrdreDeadline: lstOrdreUge1, UdgivelsesDato:lstMaterialeUge1};
+    this.ds.Post(update1).subscribe(s => {
+
+
+    });
+   let lstUdgivelseUge2 =  this.fg.get('lstUdgivelseUge2').value;
+    let lstOrdreUge2 =   this.fg.get('lstOrdreUge2').value;
+  let lstOrdreTidUge2 =   this.fg.get('lstOrdreTidUge2').value;
+  let lstMaterialeUge2  =  this.fg.get('lstMaterialeUge2').value;
+ let lstMaterialeTidUge2 =   this.fg.get('lstMaterialeTidUge2').value;
+  let lstUge2 =   this.fg.get('lstUge2').value;
+    let chk2 =  this.fg.get('chk2').value;
+
+    let update2: Deadline = {BladId: this.bladid ,   UdkommerIkke:chk2, Uge:lstUge2, MaterialeTid: lstMaterialeTidUge2, MaterialeDeadline: lstMaterialeUge2, OrdreTid:lstOrdreTidUge2, OrdreDeadline: lstOrdreUge2, UdgivelsesDato:lstMaterialeUge2};
+
+this.ds.Post(update2).subscribe(s => {
+
+
+});
+    let lstUdgivelseUge3 =  this.fg.get('lstUdgivelseUge3').value;
+    let lstOrdreUge3 =   this.fg.get('lstOrdreUge3').value;
+    let lstOrdreTidUge3 =   this.fg.get('lstOrdreTidUge3').value;
+    let lstMaterialeUge3  =  this.fg.get('lstMaterialeUge3').value;
+    let lstMaterialeTidUge3 =   this.fg.get('lstMaterialeTidUge3').value;
+    let lstUge3 =   this.fg.get('lstUge3').value;
+    let chk3 =  this.fg.get('chk3').value;
+
+    let update3: Deadline = {BladId: this.bladid ,   UdkommerIkke:chk3, Uge:lstUge3, MaterialeTid: lstMaterialeTidUge3, MaterialeDeadline: lstMaterialeUge3, OrdreTid:lstOrdreTidUge3, OrdreDeadline: lstOrdreUge3, UdgivelsesDato:lstMaterialeUge3};
+this.ds.Post(update3).subscribe(s => {
+
+}, error => {
+
+});
+    let lstUdgivelseUge4 =   this.fg.get('lstUdgivelseUge4').value;
+ let lstOrdreUge4 =    this.fg.get('lstOrdreUge4').value;
+ let lstOrdreTidUge4 =    this.fg.get('lstOrdreTidUge4').value;
+  let lstMaterialeUge4 =   this.fg.get('lstMaterialeUge4').value;
+ let lstMaterialeTidUge4 =    this.fg.get('lstMaterialeTidUge4').value;
+ let lstUge4 =    this.fg.get('lstUge4').value;
+    let chk4 =   this.fg.get('chk4').value;
+
+    let update4: Deadline = {BladId: this.bladid ,   UdkommerIkke:chk4, Uge:lstUge4, MaterialeTid: lstMaterialeTidUge4, MaterialeDeadline: lstMaterialeUge4, OrdreTid:lstOrdreTidUge4, OrdreDeadline: lstOrdreUge4, UdgivelsesDato:lstMaterialeUge4};
+this.ds.Post(update4).subscribe(s => {
+
+});
+    let lstOrdreUge5  =   this.fg.get('lstOrdreUge5').value;
+ let lstOrdreTidUge5 =    this.fg.get('lstOrdreTidUge5').value;
+  let lstMaterialeUge5 =   this.fg.get('lstMaterialeUge5').value;
+  let lstMaterialeTidUge5  =  this.fg.get('lstMaterialeTidUge5').value;
+    let chk5 =  this.fg.get('chk5').value;
+    let lstUge5 = this.fg.get('lstUge5').value;
+    let update5: Deadline = {BladId: this.bladid ,   UdkommerIkke:chk5, Uge:lstUge5, MaterialeTid: lstMaterialeTidUge5, MaterialeDeadline: lstMaterialeUge5, OrdreTid:lstOrdreTidUge5, OrdreDeadline: lstOrdreUge5, UdgivelsesDato:lstMaterialeUge5};
+this.ds.Post(update5).subscribe(s => {
+
+});
+
+  let lstUdgivelseUge6 =  this.fg.get('lstUdgivelseUge6').value;
+    let lstOrdreUge6 = this.fg.get('lstOrdreUge6').value;
+  let lstOrdreTidUge6 =   this.fg.get('lstOrdreTidUge6').value;
+   let lstMaterialeUge6 =  this.fg.get('lstMaterialeUge6').value;
+   let lstMaterialeTidUge6 =  this.fg.get('lstMaterialeTidUge6').value;
+   let lstUge6 =  this.fg.get('lstUge6').value;
+    let chk6 =   this.fg.get('chk6').value;
+
+    let update6: Deadline = {BladId: this.bladid ,   UdkommerIkke:chk6, Uge:lstUge6, MaterialeTid: lstMaterialeTidUge6, MaterialeDeadline: lstMaterialeUge6, OrdreTid:lstOrdreTidUge6, OrdreDeadline: lstOrdreUge6, UdgivelsesDato:lstMaterialeUge6};
+this.ds.Post(update6).subscribe(s => {
+
+});
+    let lstUdgivelseUge7 =   this.fg.get('lstUdgivelseUge7').value;
+ let lstOrdreUge7 =    this.fg.get('lstOrdreUge7').value;
+  let lstOrdreTidUge7 =   this.fg.get('lstOrdreTidUge7').value;
+   let lstMaterialeUge7 =  this.fg.get('lstMaterialeUge7').value;
+ let lstMaterialeTidUge7 =   this.fg.get('lstMaterialeTidUge7').value;
+  let lstUge7 =   this.fg.get('lstUge7').value;
+    let chk7 =  this.fg.get('chk7').value;
+
+    let update7: Deadline = {BladId: this.bladid ,   UdkommerIkke:chk7, Uge:lstUge7, MaterialeTid: lstMaterialeTidUge7, MaterialeDeadline: lstMaterialeUge7, OrdreTid:lstOrdreTidUge7, OrdreDeadline: lstOrdreUge7, UdgivelsesDato:lstMaterialeUge7};
+    this.ds.Post(update7).subscribe(s => {
+
+    });
+    let lstUdgivelseUge8 =    this.fg.get('lstUdgivelseUge8').value;
+  let lstOrdreUge8 =   this.fg.get('lstOrdreUge8').value;
+  let lstOrdreTidUge8 =  this.fg.get('lstOrdreTidUge8').value;
+  let lstMaterialeUge8 =   this.fg.get('lstMaterialeUge8').value;
+ let lstMaterialeTidUge8 =    this.fg.get('lstMaterialeTidUge8').value;
+   let lstUge8 =  this.fg.get('lstUge8').value;
+    let chk8 =  this.fg.get('chk8').value;
+    let update8: Deadline = {BladId: this.bladid ,   UdkommerIkke:chk8, Uge:lstUge8, MaterialeTid: lstMaterialeTidUge8, MaterialeDeadline: lstMaterialeUge8, OrdreTid:lstOrdreTidUge8, OrdreDeadline: lstOrdreUge8, UdgivelsesDato:lstMaterialeUge8};
+
+this.ds.Post(update8).subscribe(s => {
+
+});
 
   }
 

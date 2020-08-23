@@ -1,6 +1,6 @@
 export interface Deadline {
 
-
+BladId: Number;
   UdkommerIkke: boolean;
   UdgivelsesDato: number;
   OrdreDeadline: number;
