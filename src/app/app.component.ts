@@ -37,10 +37,10 @@ export class AppComponent implements  OnInit {
         console.log('App Email  ' + this.stamBladEmail);
         this.isPriser = true;
         this.isKomtakter = false;
-      } else  if(value.has('medieplannr')){
+      } else  if(value.has('bladid')){
 
-        this.mediePlanNr =  Number(value.get('medieplannr'));
-        console.log(this.mediePlanNr);
+        this.bladid =  Number(value.get('bladid'));
+        console.log(this.bladid);
         this.isPriser = false;
         this.isKomtakter = true;
       } else if (value.has('deadlines')){

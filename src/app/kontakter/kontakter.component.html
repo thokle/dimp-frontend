@@ -3,10 +3,10 @@
 <table id="kontaktTable">
   <tr *ngFor="let k of kontaker">
     <td>{{k.BladId}}</td>
-    <td><input type="text" id="name" value="{{k.Name}}" ></td>
-    <td><input  type="email" id="email" value="{{k.Email}}" ></td>
+    <td><input type="text" id="name" value="{{k.Name}}" (keyup.tab)="saveToArray(k.Title,k.KontaktType,k.telefonnummer,k.BladId, k.Email,k.Name)" ></td>
+    <td><input  type="email" id="email" value="{{k.Email}}" (keyup.tab)="saveToArray(k.Title,k.KontaktType,k.telefonnummer,k.BladId, k.Email,k.Name)" ></td>
 <td>{{k.KontaktType}}</td>
-    <td><input type="tel" value="{{k.telefonnummer}}" name="tlf"></td>
+    <td><input type="tel" value="{{k.telefonnummer}}" name="tlf" (keyup.tab)="saveToArray(k.Title,k.KontaktType,k.telefonnummer,k.BladId, k.Email,k.Name)"></td>
     <td>
      </td>
 <td><mat-select [placeholder]="k.Title"><mat-option *ngFor="let w of kontaktTitlers"  value="{{w.Titel}}">{{w.Titel}}</mat-option></mat-select></td>
