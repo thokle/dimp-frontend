@@ -1,0 +1,29 @@
+<div >
+  <table>
+    <tr>
+      <th>Annoncør</th>
+      <th>Format</th>
+      <th>Farver</th>
+      <th>Placerin</th>
+      <th>Ordnr</th>
+      <th>OK</th>
+      <th>Side</th>
+      <th>Fejl</th>
+    </tr>
+<tr  *ngFor="let a of annonce">
+  <td>{{a.Annoncor}}</td>
+  <td>{{a.Format}}</td>
+  <td>{{a.Farve}}</td>
+  <td>{{a.SidePlacering}}</td>
+  <td>{{a.OrdreNr}}</td>
+  <td><button name="fejl">Fejl</button><button name="Ok">Ok</button></td>
+<td><ng-component>
+  <mat-select>
+
+  </mat-select>
+</ng-component></td>
+</tr>
+  </table>
+
+
+</div>

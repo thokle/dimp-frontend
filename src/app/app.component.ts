@@ -3,6 +3,7 @@ import {Component, NgZone, OnInit} from '@angular/core';
 
 import {ActivatedRoute, Router, RouterState, RouterStateSnapshot} from "@angular/router";
 import {tokenReference} from "@angular/compiler";
+import {valueReferenceToExpression} from "@angular/compiler-cli/src/ngtsc/annotations/src/util";
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,11 @@ export class AppComponent implements  OnInit {
   stamBladEmail: any;
   bladid;
   type;
+  isAnnoncekontrol: any;
+
+  value2: any;
+
+
   constructor(private router: Router, private  activeRouter: ActivatedRoute) {
 
 
@@ -56,6 +62,14 @@ export class AppComponent implements  OnInit {
         this.isKomtakter  = false;
         this.isDeadLine2 = true;
         this.isDeadline1 = false;
+      } else if (value.has('annoncekontrol')){
+        const val = value.get('annoncekontrol').split("*");
+        this.value2 =  val;
+        this.isPriser= false;
+        this.isKomtakter  = false;
+        this.isDeadLine2 = false;
+        this.isDeadline1 = false;
+        this.isAnnoncekontrol = true;
       }
 
     });

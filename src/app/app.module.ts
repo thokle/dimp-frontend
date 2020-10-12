@@ -23,6 +23,7 @@ import { DeadLine2Component } from './dead-line2/dead-line2.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
+import { AnnonceKontrolComponent } from './annonce-kontrol/annonce-kontrol.component';
 
 
 
@@ -32,7 +33,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     PriserComponent,
     KontakterComponent,
     DeadlineComponent,
-    DeadLine2Component
+    DeadLine2Component,
+    AnnonceKontrolComponent
   ],
   imports: [
     BrowserModule,
