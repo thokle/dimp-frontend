@@ -1,12 +1,12 @@
 
   export interface KontaktTyper {
-    id: number;
-    titel: string;
+    id;
+    titel;
   }
 
   export interface KontaktTitler {
-    id: number;
-    titel: string;
+    id;
+    Titel;
   }
 
   export interface StamBladUdSendingKontakt {

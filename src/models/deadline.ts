@@ -1,6 +1,4 @@
-export interface Deadline {
-
-BladId: Number;
+export interface Dead {
   UdkommerIkke: boolean;
   UdgivelsesDato: number;
   OrdreDeadline: number;
@@ -8,6 +6,10 @@ BladId: Number;
   MaterialeDeadline: number;
   MaterialeTid: string;
   Uge: string;
+  BladID: number;
+  Linje: number;
+}
 
-
+export interface Deadline{
+  dead: Dead;
 }

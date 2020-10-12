@@ -3,6 +3,7 @@ import {environment} from "../environments/environment";
 import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {StamBladUdSendingKontakt} from "../models/stam-blad-ud-sendingkontakt";
+import {RootObjectUdsendingKontakter} from "../models/udsending-kontakter";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,16 @@ export class KontaktService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'});
     return this.http.post(url, JSON.stringify(kontakt), {headers: headers}).pipe();
+
+
+  }
+
+  public  UpdateKontakt(kontakt: RootObjectUdsendingKontakter) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'});
+    const url = this.baseUrl + 'kontater/';
+
+    return this.http.post(url, JSON.stringify(kontakt), {headers: headers} ).pipe();
 
 
   }

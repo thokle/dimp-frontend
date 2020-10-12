@@ -1,7 +1,7 @@
 
 
 <ng-container  *ngIf="isKomtakter">
-  <app-kontakter [mediePlan]="mediePlanNr"></app-kontakter>
+  <app-kontakter [bladid]="bladid"></app-kontakter>
 </ng-container>
 
 <ng-container *ngIf="isPriser">
@@ -14,4 +14,9 @@
 
 <ng-container *ngIf="isDeadLine2">
   <app-dead-line2 ></app-dead-line2>
+</ng-container>
+
+<ng-container *ngIf="isAnnoncekontrol">
+<app-annonce-kontrol [value]="value2"></app-annonce-kontrol>
+
 </ng-container>

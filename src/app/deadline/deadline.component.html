@@ -1,12 +1,12 @@
 <p>deadline works!</p>
 
-<form  formGroupName="fg" >
+<div [formGroup]="fg">
 
 
   <table  style="width: 80%; background: lightskyblue; align-content: flex-start" id="prisTable" >
     <tr><th align="left">Uge</th><th colspan="1" align="left">Udkommer ikke</th><th colspan="2" align="left">Udgivelsesdato</th><th colspan="1" align="left">DeadLines for ordrer</th><th colspan="1" align="left">DeadLine for materiale</th></tr>
     <tr>
-      <td >  <select name="lstUge1" matNativeControl id="lstUge1"  formControlName="lstUge1"  [placeholder]="pLlstUge2" >
+      <td >  <select name="lstUge1" matNativeControl id="lstUge1"  formControlName="lstUge1"   >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -69,7 +69,7 @@
 
 
      </td>
-      <td>   <select  matNativeControl   formControlName="lstOrdreUge1"  [placeholder]="pLlstOrdreUge2" name="lstOrdreUge2" id="lstOrdreUge1">
+      <td>   <select  matNativeControl   formControlName="lstOrdreUge1"   name="lstOrdreUge2" >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -104,7 +104,7 @@
         <option value="31">31</option>
 
       </select>      </td>
-      <td>  <select name="lstUdgivelseUge1" formControlName="lstUdgivelseUge1" [placeholder]="pLlstUdgivelseUge2" matNativeControl id="lstUdgivelseUge1" >
+      <td>  <select name="lstUdgivelseUge1" formControlName="lstUdgivelseUge1"  matNativeControl  >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -139,7 +139,7 @@
         <option value="31">31</option>
 
       </select></td>
-      <td>  <select name="lstOrdreTidUge1"   formControlName="lstOrdreTidUge1"   [placeholder]="pLlstOrdreTidUge2" matNativeControl id="lstOrdreTidUge1" >
+      <td>  <select name="lstOrdreTidUge1"   formControlName="lstOrdreTidUge1"    matNativeControl  >
         <option > </option>
         <option value="9:00">9:00</option>
         <option value="9:30">9:30</option>
@@ -159,7 +159,7 @@
         <option value="16:30">16:30</option>
 
       </select>      </td>
-      <td>  <select name="lstMaterialeUge1"   formControlName="lstMaterialeUge1" [placeholder]="pLlstMaterialeUge2"  matNativeControl id="lstMaterialeUge1" >
+      <td>  <select name="lstMaterialeUge1"   formControlName="lstMaterialeUge1"  matNativeControl >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -194,7 +194,7 @@
         <option value="31">31</option>
 
       </select>      </td>
-      <td>  <select name="lstMaterialeTidUge1"  matNativeControl  formControlName="lstMaterialeTidUge1"  [placeholder]="pLlstMaterialeTidUge1" id="lstMaterialeTidUge1" >
+      <td>  <select name="lstMaterialeTidUge1"  matNativeControl  formControlName="lstMaterialeTidUge1"   >
         <option value=" "> </option>
         <option value="9:00">9:00</option>
         <option value="9:30">9:30</option>
@@ -217,7 +217,7 @@
 
     </tr>
     <tr>
-      <td>  <select name="lstUge2" matNativeControl id="lstUge2"  formControlName="lstUge2"  [placeholder]="pLlstUge2" >
+      <td>  <select name="lstUge2" matNativeControl  formControlName="lstUge2"   >
       <option value=" "> </option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -275,9 +275,9 @@
 
     </select></td>
       <td>
-        <mat-checkbox id="chkKommerIkke2"   formControlName="chk2" name="chkKommerIkke2" ></mat-checkbox>
+        <mat-checkbox    formControlName="chk2" name="chkKommerIkke2" ></mat-checkbox>
       </td>
-      <td>   <select  matNativeControl   formControlName="lstOrdreUge2"  [placeholder]="pLlstOrdreUge2" name="lstOrdreUge2" id="lstOrdreUge2">
+      <td>   <select  matNativeControl   formControlName="lstOrdreUge2"   name="lstOrdreUge2" >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -312,7 +312,7 @@
         <option value="31">31</option>
 
       </select>      </td>
-      <td>  <select name="lstUdgivelseUge2" formControlName="lstUdgivelseUge2" [placeholder]="pLlstUdgivelseUge2" matNativeControl id="lstUdgivelseUge2" >
+      <td>  <select name="lstUdgivelseUge2" formControlName="lstUdgivelseUge2"  matNativeControl  >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -347,7 +347,7 @@
         <option value="31">31</option>
 
       </select></td>
-      <td>  <select name="lstOrdreTidUge2"   formControlName="lstOrdreTidUge2"   [placeholder]="pLlstOrdreTidUge2" matNativeControl id="lstOrdreTidUge2" >
+      <td>  <select name="lstOrdreTidUge2"   formControlName="lstOrdreTidUge2"    matNativeControl >
         <option value=" "> </option>
         <option value="9:00">9:00</option>
         <option value="9:30">9:30</option>
@@ -367,7 +367,7 @@
         <option value="16:30">16:30</option>
 
       </select>      </td>
-      <td>  <select name="lstMaterialeUge2"   formControlName="lstMaterialeUge2" [placeholder]="pLlstMaterialeUge2"  matNativeControl id="lstMaterialeUge2" >
+      <td>  <select name="lstMaterialeUge2"   formControlName="lstMaterialeUge2"   matNativeControl >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -402,7 +402,7 @@
         <option value="31">31</option>
 
       </select>      </td>
-      <td>  <select name="lstMaterialeTidUge2"  matNativeControl  formControlName="lstMaterialeTidUge2"  [placeholder]="pLlstMaterialeTidUge2" id="lstMaterialeTidUge2" >
+      <td>  <select name="lstMaterialeTidUge2"  matNativeControl  formControlName="lstMaterialeTidUge2"    >
         <option value=" "> </option>
         <option value="9:00">9:00</option>
         <option value="9:30">9:30</option>
@@ -425,7 +425,7 @@
 
     </tr>
     <tr>
-      <td>  <select name="lstUge3" matNativeControl id="lstUge3"  formControlName="lstUge3"  [placeholder]="pLlstUge2" >
+      <td>  <select name="lstUge3" matNativeControl id="lstUge3"  formControlName="lstUge3"   >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -486,7 +486,7 @@
 
          <mat-checkbox id="chkKommerIkke3"   formControlName="chk3" name="chkKommerIkke3" ></mat-checkbox>
       </td>
-      <td>   <select  matNativeControl   formControlName="lstOrdreUge3"  [placeholder]="pLlstOrdreUge3" name="lstOrdreUge3" id="lstOrdreUge3">
+      <td>   <select  matNativeControl   formControlName="lstOrdreUge3" name="lstOrdreUge3" >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -521,7 +521,7 @@
         <option value="31">31</option>
 
       </select>      </td>
-      <td>  <select name="lstUdgivelseUge3" formControlName="lstUdgivelseUge3" [placeholder]="pLlstUdgivelseUge3" matNativeControl id="lstUdgivelseUge3" >
+      <td>  <select name="lstUdgivelseUge3" formControlName="lstUdgivelseUge3" matNativeControl  >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -556,7 +556,7 @@
         <option value="31">31</option>
 
       </select></td>
-      <td>  <select name="lstOrdreTidUge3"   formControlName="lstOrdreTidUge3"   [placeholder]="pLlstOrdreTidUge3" matNativeControl id="lstOrdreTidUge3" >
+      <td>  <select name="lstOrdreTidUge3"   formControlName="lstOrdreTidUge3"    matNativeControl  >
         <option value=" "> </option>
         <option value="9:00">9:00</option>
         <option value="9:30">9:30</option>
@@ -576,7 +576,7 @@
         <option value="16:30">16:30</option>
 
       </select>      </td>
-      <td>  <select name="lstMaterialeUge3"   formControlName="lstMaterialeUge3" [placeholder]="pLlstMaterialeUge3"  matNativeControl id="lstMaterialeUge3" >
+      <td>  <select name="lstMaterialeUge3"   formControlName="lstMaterialeUge3"   matNativeControl  >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -611,7 +611,7 @@
         <option value="31">31</option>
 
       </select>      </td>
-      <td>  <select name="lstMaterialeTidUge3"  matNativeControl  formControlName="lstMaterialeTidUge3"  [placeholder]="pLlstMaterialeTidUge3" id="lstMaterialeTidUge3" >
+      <td>  <select name="lstMaterialeTidUge3"  matNativeControl  formControlName="lstMaterialeTidUge3"    >
         <option value=" "> </option>
         <option value="9:00">9:00</option>
         <option value="9:30">9:30</option>
@@ -634,7 +634,7 @@
 
     </tr>
     <tr>
-    <td>  <select name="lstUge4" matNativeControl id="lstUge4"  formControlName="lstUge4"  [placeholder]="pLlstUge2" >
+    <td>  <select name="lstUge4" matNativeControl id="lstUge4"  formControlName="lstUge4"  >
       <option value=" "> </option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -695,7 +695,7 @@
       <mat-checkbox id="chkKommerIkke4"   formControlName="chk4" name="chkKommerIkke4" ></mat-checkbox>
 
     </td>
-    <td>   <select  matNativeControl   formControlName="lstOrdreUge4"  [placeholder]="pLlstOrdreUge4" name="lstOrdreUge4" id="lstOrdreUge4">
+    <td>   <select  matNativeControl   formControlName="lstOrdreUge4"   name="lstOrdreUge4" >
       <option value=" "> </option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -730,7 +730,7 @@
       <option value="31">31</option>
 
     </select>      </td>
-    <td>  <select name="lstUdgivelseUge4" formControlName="lstUdgivelseUge4" [placeholder]="pLlstUdgivelseUge4" matNativeControl id="lstUdgivelseUge4" >
+    <td>  <select name="lstUdgivelseUge4" formControlName="lstUdgivelseUge4"  matNativeControl>
       <option value=" "> </option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -765,7 +765,7 @@
       <option value="31">31</option>
 
     </select></td>
-    <td>  <select name="lstOrdreTidUge4"   formControlName="lstOrdreTidUge4"   [placeholder]="pLlstOrdreTidUge4" matNativeControl id="lstOrdreTidUge4" >
+    <td>  <select name="lstOrdreTidUge4"   formControlName="lstOrdreTidUge4"   matNativeControl  >
       <option value=" "> </option>
       <option value="9:00">9:00</option>
       <option value="9:30">9:30</option>
@@ -785,7 +785,7 @@
       <option value="16:30">16:30</option>
 
     </select>      </td>
-    <td>  <select name="lstMaterialeUge4"   formControlName="lstMaterialeUge4" [placeholder]="pLlstMaterialeUge4"  matNativeControl id="lstMaterialeUge4" >
+    <td>  <select name="lstMaterialeUge4"   formControlName="lstMaterialeUge4"  matNativeControl  >
       <option value=" "> </option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -820,7 +820,7 @@
       <option value="31">31</option>
 
     </select>      </td>
-    <td>  <select name="lstMaterialeTidUge4"  matNativeControl  formControlName="lstMaterialeTidUge4"  [placeholder]="pLlstMaterialeTidUge4" id="lstMaterialeTidUge4" >
+    <td>  <select name="lstMaterialeTidUge4"  matNativeControl  formControlName="lstMaterialeTidUge4"    >
       <option value=" "> </option>
       <option value="9:00">9:00</option>
       <option value="9:30">9:30</option>
@@ -843,7 +843,7 @@
 
     </tr>
     <tr>
-    <td>  <select name="lstUge5" matNativeControl id="lstUge5"  formControlName="lstUge5"  [placeholder]="pLlstUge2" >
+    <td>  <select name="lstUge5" matNativeControl id="lstUge5"  formControlName="lstUge5"   >
       <option value=" "> </option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -900,11 +900,11 @@
       <option value="53">53</option>
 
     </select></td>
-    <td> <mat-checkbox id="chkKommerIkke5"   formControlName="chk5" name="chkKommerIkke5" ></mat-checkbox>
+    <td> <mat-checkbox    formControlName="chk5" name="chkKommerIkke5" ></mat-checkbox>
 
 
     </td>
-    <td>   <select  matNativeControl   formControlName="lstOrdreUge4"  [placeholder]="pLlstOrdreUge5" name="lstOrdreUge5" id="lstOrdreUge5">
+    <td>   <select  matNativeControl   formControlName="lstOrdreUge4"   name="lstOrdreUge5" >
       <option value=" "> </option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -939,7 +939,7 @@
       <option value="31">31</option>
 
     </select>      </td>
-    <td>  <select name="lstUdgivelseUge5" formControlName="lstUdgivelseUge5" [placeholder]="pLlstUdgivelseUge5" matNativeControl id="lstUdgivelseUge5" >
+    <td>  <select name="lstUdgivelseUge5" formControlName="lstUdgivelseUge5"  matNativeControl>
       <option value=" "> </option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -974,7 +974,7 @@
       <option value="31">31</option>
 
     </select></td>
-    <td>  <select name="lstOrdreTidUge5"   formControlName="lstOrdreTidUge5"   [placeholder]="pLlstOrdreTidUge5" matNativeControl id="lstOrdreTidUge5" >
+    <td>  <select name="lstOrdreTidUge5"   formControlName="lstOrdreTidUge5"    matNativeControl  >
       <option value=" "> </option>
       <option value="9:00">9:00</option>
       <option value="9:30">9:30</option>
@@ -994,7 +994,7 @@
       <option value="16:30">16:30</option>
 
     </select>      </td>
-    <td>  <select name="lstMaterialeUge5"   formControlName="lstMaterialeUge5" [placeholder]="pLlstMaterialeUge5"  matNativeControl id="lstMaterialeUge5" >
+    <td>  <select name="lstMaterialeUge5"   formControlName="lstMaterialeUge5"   matNativeControl  >
       <option value=" "> </option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -1029,7 +1029,7 @@
       <option value="31">31</option>
 
     </select>      </td>
-    <td>  <select name="lstMaterialeTidUge5"  matNativeControl  formControlName="lstMaterialeTidUge5"  [placeholder]="pLlstMaterialeTidUge2" id="lstMaterialeTidUge5" >
+    <td>  <select name="lstMaterialeTidUge5"  matNativeControl  formControlName="lstMaterialeTidUge5"   >
       <option value=" "> </option>
       <option value="9:00">9:00</option>
       <option value="9:30">9:30</option>
@@ -1052,7 +1052,7 @@
 
     </tr>
     <tr>
-      <td>   <select name="lstUge6" formControlName="lstUge6" id="lstUge6" [placeholder]="pLlstUge6" matNativeControl >
+      <td>   <select name="lstUge6" formControlName="lstUge6"   matNativeControl >
       <option value=" "> </option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -1110,10 +1110,10 @@
 
     </select> </td>
       <td>
-        <mat-checkbox id="chkKommerIkke6"   formControlName="chk6" name="chkKommerIkke6" ></mat-checkbox>
+        <mat-checkbox  formControlName="chk6" name="chkKommerIkke6" ></mat-checkbox>
 
       </td>
-  <td>  <select name="lstUdgivelseUge6"   [placeholder]="pLlstUdgivelseUge6" formControlName="lstUdgivelseUge6"   matNativeControl id="lstUdgivelseUge6" >
+  <td>  <select name="lstUdgivelseUge6"    formControlName="lstUdgivelseUge6"   matNativeControl  >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -1148,12 +1148,12 @@
         <option value="31">31</option>
 
   </select></td>
-    <td>  <select name="lstOrdreUge6"   formControlName="lstOrdreUge6" [placeholder]="pLlstOrdreUge6"  matNativeControl id="lstOrdreUge6" >
+    <td>  <select name="lstOrdreUge6"   formControlName="lstOrdreUge6"   matNativeControl  >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
-        <option selected="selected" value="4">4</option>
+        <option value="4">4</option>
         <option value="5">5</option>
         <option value="6">6</option>
         <option value="7">7</option>
@@ -1183,7 +1183,7 @@
         <option value="31">31</option>
 
     </select></td>
-     <td> <select name="lstOrdreTidUge6"   formControlName="lstOrdreTidUge6" [placeholder]="pLlstOrdreTidUge6" id="lstOrdreTidUge6"  matNativeControl >
+     <td> <select name="lstOrdreTidUge6"   formControlName="lstOrdreTidUge6"    matNativeControl >
         <option value=" "> </option>
         <option value="9:00">9:00</option>
         <option value="9:30">9:30</option>
@@ -1195,7 +1195,7 @@
         <option value="12:30">12:30</option>
         <option value="13:00">13:00</option>
         <option value="13:30">13:30</option>
-        <option selected="selected" value="14:00">14:00</option>
+        <option value="14:00">14:00</option>
         <option value="14:30">14:30</option>
         <option value="15:00">15:00</option>
         <option value="15:30">15:30</option>
@@ -1203,7 +1203,7 @@
         <option value="16:30">16:30</option>
 
      </select></td>
-     <td> <select name="lstMaterialeUge6"   formControlName="lstMaterialeUge6" [placeholder]="pLlstMaterialeUge6" id="lstMaterialeUge6" matNativeControl  >
+     <td> <select name="lstMaterialeUge6"   formControlName="lstMaterialeUge6"  matNativeControl  >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -1238,7 +1238,7 @@
         <option value="31">31</option>
 
      </select></td>
-     <td> <select name="lstMaterialeTidUge6" matNativeControl id="lstMaterialeTidUge6"  [placeholder]="pLlstMaterialeTidUge6" >
+     <td> <select name="lstMaterialeTidUge6" matNativeControl   >
         <option value=" "> </option>
         <option value="9:00">9:00</option>
         <option value="9:30">9:30</option>
@@ -1250,7 +1250,7 @@
         <option value="12:30">12:30</option>
         <option value="13:00">13:00</option>
         <option value="13:30">13:30</option>
-        <option selected="selected" value="14:00">14:00</option>
+        <option value="14:00">14:00</option>
         <option value="14:30">14:30</option>
         <option value="15:00">15:00</option>
         <option value="15:30">15:30</option>
@@ -1261,7 +1261,7 @@
 
     </tr>
     <tr>
-      <td>  <select name="lstUge7" matNativeControl id="lstUge7"  formControlName="lstUge6"  [placeholder]="pLlstUge2" >
+      <td>  <select name="lstUge7" matNativeControl   formControlName="lstUge6"  >
       <option value=" "> </option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -1319,10 +1319,10 @@
 
     </select></td>
       <td>
-        <mat-checkbox id="chkKommerIkke7"   formControlName="chk7" name="chkKommerIkke1" ></mat-checkbox>
+        <mat-checkbox   formControlName="chk7" name="chkKommerIkke1" ></mat-checkbox>
 
       </td>
-      <td>   <select  matNativeControl   formControlName="lstOrdreUge6"  [placeholder]="pLlstOrdreUge5" name="lstOrdreUge5" id="lstOrdreUge7">
+      <td>   <select  matNativeControl   formControlName="lstOrdreUge6"  name="lstOrdreUge5" >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -1357,7 +1357,7 @@
         <option value="31">31</option>
 
       </select>      </td>
-      <td>  <select name="lstUdgivelseUge7" formControlName="lstUdgivelseUge6" [placeholder]="pLlstUdgivelseUge6" matNativeControl id="lstUdgivelseUge7" >
+      <td>  <select name="lstUdgivelseUge7" formControlName="lstUdgivelseUge6" matNativeControl  >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -1392,7 +1392,7 @@
         <option value="31">31</option>
 
       </select></td>
-      <td>  <select name="lstOrdreTidUge7"   formControlName="lstOrdreTidUge6"   [placeholder]="pLlstOrdreTidUge6" matNativeControl id="lstOrdreTidUge7" >
+      <td>  <select name="lstOrdreTidUge7"   formControlName="lstOrdreTidUge6"    matNativeControl  >
         <option value=" "> </option>
         <option value="9:00">9:00</option>
         <option value="9:30">9:30</option>
@@ -1412,7 +1412,7 @@
         <option value="16:30">16:30</option>
 
       </select>      </td>
-      <td>  <select name="lstMaterialeUge7"   formControlName="lstMaterialeUge6" [placeholder]="pLlstMaterialeUge6"  matNativeControl id="lstMaterialeUge7" >
+      <td>  <select name="lstMaterialeUge7"   formControlName="lstMaterialeUge6"  matNativeControl >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -1447,7 +1447,7 @@
         <option value="31">31</option>
 
       </select>      </td>
-      <td>  <select name="lstMaterialeTidUge7"  matNativeControl  formControlName="lstMaterialeTidUge5"  [placeholder]="pLlstMaterialeTidUge7" id="lstMaterialeTidUge7" >
+      <td>  <select name="lstMaterialeTidUge7"  matNativeControl  formControlName="lstMaterialeTidUge5"    >
         <option value=" "> </option>
         <option value="9:00">9:00</option>
         <option value="9:30">9:30</option>
@@ -1469,7 +1469,7 @@
       </select>    </td>
     </tr>
     <tr>
-      <td>   <select name="lstUge8" [placeholder]="pLlstUge8" formControlName="lstUge8" id="lstUge8" matNativeControl  >
+      <td>   <select name="lstUge8"  formControlName="lstUge8"  matNativeControl  >
       <option value=" "> </option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -1527,9 +1527,9 @@
 
     </select></td>
       <td>
-        <mat-checkbox id="chkKommerIkke8"   formControlName="chk8" name="chkKommerIkke8" ></mat-checkbox>
+        <mat-checkbox    formControlName="chk8" name="chkKommerIkke8" ></mat-checkbox>
       </td>
-   <td>   <select name="lstUdgivelseUge8"   formControlName="lstUdgivelseUge8"  matNativeControl id="lstUdgivelseUge8" [placeholder]="pLlstUdgivelseUge8" >
+   <td>   <select name="lstUdgivelseUge8"   formControlName="lstUdgivelseUge8"  matNativeControl  >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -1564,7 +1564,7 @@
         <option value="31">31</option>
 
    </select></td>
-     <td> <select name="lstOrdreUge8"   formControlName="lstOrdreUge8"  id="lstOrdreUge8" matNativeControl [placeholder]="pLlstOrdreUge8" >
+     <td> <select name="lstOrdreUge8"   formControlName="lstOrdreUge8"   matNativeControl  >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -1599,7 +1599,7 @@
         <option value="31">31</option>
 
      </select></td>
-     <td> <select name="lstOrdreTidUge8"   formControlName="lstOrdreTidUge8"  [placeholder]="pLlstOrdreTidUge8" matNativeControl id="lstOrdreTidUge8" >
+     <td> <select name="lstOrdreTidUge8"   formControlName="lstOrdreTidUge8"   matNativeControl >
         <option value=" "> </option>
         <option value="9:00">9:00</option>
         <option value="9:30">9:30</option>
@@ -1619,7 +1619,7 @@
         <option value="16:30">16:30</option>
 
      </select></td>
-     <td> <select name="lstMaterialeUge8"   formControlName="lstMaterialeUge8"  [placeholder]="pLlstMaterialeUge8" matNativeControl id="lstMaterialeUge8" >
+     <td> <select name="lstMaterialeUge8"   formControlName="lstMaterialeUge8"  matNativeControl  >
         <option value=" "> </option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -1654,7 +1654,7 @@
         <option value="31">31</option>
 
      </select></td>
-     <td> <select name="lstMaterialeTidUge8"    formControlName="lstMaterialeTidUge8" [placeholder]="pLlstMaterialeTidUge8" matNativeControl id="lstMaterialeTidUge8" >
+     <td> <select name="lstMaterialeTidUge8"    formControlName="lstMaterialeTidUge8" matNativeControl  >
         <option value=" "> </option>
         <option value="9:00">9:00</option>
         <option value="9:30">9:30</option>
@@ -1694,7 +1694,6 @@
 
 
 
+<button mat-button  (click)="OpretUge()">Opdater</button>
 
-<input type="submit" name="btnOpdater" value="Opdater" id="btnOpdater"  />
-
-</form>
+</div>
