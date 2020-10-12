@@ -30,4 +30,10 @@ export class KontakterComponent implements OnInit {
       console.log(value);
     })
   }
+
+  accept() {
+    this.ks.UpdateStamBladUdendingKontakterByID(this.kontaker).subscribe( res => {
+      
+    });
+  }
 }
