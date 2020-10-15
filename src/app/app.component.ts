@@ -22,7 +22,7 @@ export class AppComponent implements  OnInit {
   stamBladEmail: any;
   bladid;
   type;
-  isAnnoncekontrol: any;
+  isAnnoncekontrol= true;
 
   value2: any;
 

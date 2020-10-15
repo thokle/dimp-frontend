@@ -16,12 +16,22 @@
   <td>{{a.Farve}}</td>
   <td>{{a.SidePlacering}}</td>
   <td>{{a.OrdreNr}}</td>
-  <td><button name="fejl">Fejl</button><button name="Ok">Ok</button></td>
-<td><ng-component>
-  <mat-select>
+  <td><button name="fejl{{a.BladID}}" id="fejl" (click)="fejl(a)">Fejl</button><button  id="ok{{a.BladID}}" (click)="go(a)" name="Ok">OK</button><button id="send{{a.BladID}}" style="visibility:hidden ">Send</button></td>
+ <td><input style="visibility: hidden" id="side{{a.BladID}}" type="text"></td>
+  <td >
+    <select
+      style="visibility: hidden"
+  id="fejl{{a.BladID}}"
+      class="form-control"
+      (change)="selectedVal(selectedId)"
+    >
+      <option *ngFor="let brand of brands" [value]="brand.Id">
+        {{ brand.name | titlecase }}</option
+      >
+    </select>
+  </td>
+<td>
 
-  </mat-select>
-</ng-component></td>
 </tr>
   </table>
 
