@@ -23,6 +23,12 @@ export class AnnonceService {
         return  this.http.get<WebAnnoce[]>(url).pipe();
   }
 
+  public  GetManglerKontrol(OrdreID: Number) : Observable<Number>{
+    const ur = this.baseurl + "/ManglerKontrol/"+ OrdreID;
+    return  this.http.get<Number>(ur).pipe();
+
+  }
+
   public  GetAvisNavn(bladid): Observable<string[]> {
     const url =  this.baseurl + "/annoncekontrol/" + bladid;
     return  this.http.get<string[]>(url).pipe();

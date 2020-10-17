@@ -16,24 +16,22 @@
   <td>{{a.Farve}}</td>
   <td>{{a.SidePlacering}}</td>
   <td>{{a.OrdreNr}}</td>
-  <td><button name="fejl{{a.BladID}}" id="fejl" (click)="fejl(a)">Fejl</button><button  id="ok{{a.BladID}}" (click)="go(a)" name="Ok">OK</button><button id="send{{a.BladID}}" style="visibility:hidden ">Send</button></td>
+  <td><button name="fejl{{a.BladID}}" id="fejl" (click)="fejl(a)">Fejl</button><button  id="ok{{a.BladID}}" (click)="go(a)" name="Ok">OK</button><button id="send{{a.BladID}}" (click)="sendM(a)" style="visibility:hidden ">Send</button></td>
  <td><input style="visibility: hidden" id="side{{a.BladID}}" type="text"></td>
   <td >
-    <select
-      style="visibility: hidden"
-  id="fejl{{a.BladID}}"
-      class="form-control"
-      (change)="selectedVal(selectedId)"
-    >
-      <option *ngFor="let brand of brands" [value]="brand.Id">
-        {{ brand.name | titlecase }}</option
-      >
-    </select>
+
+
+    <select id="selected{{a.BladID}}">
+<option id="option{{b.Id}}" *ngFor="let b of brands" [value]="b.Id" (selectionchange)="selectedVal(b.Id)">{{b.name}} </option>
+      </select>
+
+
+
   </td>
 <td>
 
 </tr>
   </table>
 
-
+{{selectedId}}
 </div>

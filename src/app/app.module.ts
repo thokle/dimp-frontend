@@ -22,7 +22,7 @@ import { DeadlineComponent } from './deadline/deadline.component';
 import { DeadLine2Component } from './dead-line2/dead-line2.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AnnonceKontrolComponent } from './annonce-kontrol/annonce-kontrol.component';
 
 
@@ -36,22 +36,23 @@ import { AnnonceKontrolComponent } from './annonce-kontrol/annonce-kontrol.compo
     DeadLine2Component,
     AnnonceKontrolComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatListModule,
-    MatToolbarModule,
-    MatTableModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatInputModule,
-    ReactiveFormsModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatListModule,
+        MatToolbarModule,
+        MatTableModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        FormsModule
 
-  ],
+    ],
   providers: [PriceWebService, Location, KontaktService, NewPriserService],
   bootstrap: [AppComponent]
 })
