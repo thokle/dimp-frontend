@@ -22,8 +22,8 @@ export class AppComponent implements  OnInit {
   stamBladEmail: any;
   bladid;
   type;
-  isAnnoncekontrol= true;
-
+  isAnnoncekontrol= false;
+name= "";
   value2: any;
 
 
@@ -63,13 +63,21 @@ export class AppComponent implements  OnInit {
         this.isDeadLine2 = true;
         this.isDeadline1 = false;
       } else if (value.has('annoncekontrol')){
-        const val = value.get('annoncekontrol').split("*");
+        const val = value.get('annoncekontrol');
         this.value2 =  val;
         this.isPriser= false;
         this.isKomtakter  = false;
         this.isDeadLine2 = false;
         this.isDeadline1 = false;
         this.isAnnoncekontrol = true;
+      } else  if(value.has('kontakt')){
+        this.name  = value.get('kontakt');
+
+        this.isPriser= false;
+        this.isKomtakter  = true;
+        this.isDeadLine2 = false;
+        this.isDeadline1 = false;
+        this.isAnnoncekontrol = false;
       }
 
     });

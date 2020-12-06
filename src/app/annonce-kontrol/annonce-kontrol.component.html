@@ -1,7 +1,9 @@
 <div >
-  <table>
+  <table style="width: 80%; background: lightskyblue; align-content: flex-start" id="prisTable" >
     <tr>
       <th>Annoncør</th>
+      <th>Er kontrolleret</th>
+      <th>Blad ID</th>
       <th>Format</th>
       <th>Farver</th>
       <th>Placerin</th>
@@ -12,16 +14,18 @@
     </tr>
 <tr  *ngFor="let a of annonce">
   <td>{{a.Annoncor}}</td>
+  <td>{{a.BladID}}</td>
   <td>{{a.Format}}</td>
   <td>{{a.Farve}}</td>
-  <td>{{a.SidePlacering}}</td>
   <td>{{a.OrdreNr}}</td>
-  <td><button name="fejl{{a.BladID}}" id="fejl" (click)="fejl(a)">Fejl</button><button  id="ok{{a.BladID}}" (click)="go(a)" name="Ok">OK</button><button id="send{{a.BladID}}" (click)="sendM(a)" style="visibility:hidden ">Send</button></td>
- <td><input style="visibility: hidden" id="side{{a.BladID}}" type="text"></td>
+  <td>{{a.SidePlacering}}</td>
+
+  <td><button name="fejl{{a.OrdreNr}}" id="fejl" (click)="fejl(a)">Fejl</button><button  id="ok{{a.OrdreNr}}" (click)="go(a)" name="Ok">OK</button><button id="send{{a.OrdreNr}}" (click)="sendM(a)" style="visibility:hidden ">Send</button></td>
+ <td><input style="visibility: visible" id="side{{a.OrdreNr}}" type="text"></td>
   <td >
 
 
-    <select id="selected{{a.BladID}}">
+    <select id="selected{{a.OrdreNr}}">
 <option id="option{{b.Id}}" *ngFor="let b of brands" [value]="b.Id" (selectionchange)="selectedVal(b.Id)">{{b.name}} </option>
       </select>
 

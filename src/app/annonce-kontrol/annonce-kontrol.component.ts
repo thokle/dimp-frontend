@@ -17,12 +17,12 @@ export class AnnonceKontrolComponent implements OnInit {
   isSend = false;
   isFejl = false;
   isOk = true
-@ViewChild("fejId")
-fejlId
+  @ViewChild("fejId")
+  fejlId
   erOrdre = 0;
   buttonName = "Ok";
-  selectedId =  0;
-
+  selectedId = 0;
+  sidetal;
   brands = [
     {
       Id: 0,
@@ -56,7 +56,7 @@ fejlId
       Id: 7,
       name: "Forkert placering"
     }
-    ,{
+    , {
       Id: 8,
       name: "Forkert annonce format"
     }, {
@@ -64,7 +64,6 @@ fejlId
       Id: 9,
       name: "Glemt farve"
     }
-
   ];
 
 
@@ -74,252 +73,138 @@ fejlId
   indrykningsUge;
   @Input()
   year;
-email;
-   annonce: WebAnnoce[] = [];
+  email;
+  annonce: WebAnnoce[] = [];
   private status: number;
 
-  constructor(private  ws: AnnonceService) { }
+  constructor(private  ws: AnnonceService) {
+  }
 
   ngOnInit(): void {
-    this.annonce.push({
-      Annoncor: "test1",
-      AnnoncorID: "",
-      AntalFarver: 0,
-      Betegenelse: "",
-      BladID: 2,
-      DPKulorID: 0,
-      EXPR2: 0,
-      ErOrdre: 0,
-      Farve: "2",
-      FejlID: 0,
-      Format: "100x12",
-      MedieplanNr: 123123,
-      MmType: 0,
-      OrdreNr: 1212151,
-      SidePlacering: 0,
-      SlutVist: false,
-      Version: 0
-    });
+    const val = this.value.toString().split("*")
+    this.ws.GetWebAnnonceKontrol(val[0], val[1], val[2]).subscribe(value1 => {
 
-    this.annonce.push({
-      Annoncor: "tets",
-      AnnoncorID: "",
-      AntalFarver: 0,
-      Betegenelse: "",
-      BladID: 1,
-      DPKulorID: 0,
-      EXPR2: 0,
-      ErOrdre: 0,
-      Farve: "4",
-      FejlID: 0,
-      Format: "",
-      MedieplanNr: 4444,
-      MmType: 0,
-      OrdreNr: 121212,
-      SidePlacering: 0,
-      SlutVist: false,
-      Version: 0
+      this.annonce = value1;
     });
-
   }
 
 
-  public  go(data: WebAnnoce) {
-    const selectedElement= document.getElementById("selected"+data.BladID) as HTMLSelectElement;
-   const item=  selectedElement.options.item(selectedElement.options.selectedIndex);
-   console.log(item.value);
-   const buttonElemet  =  document.getElementById("ok"+data.BladID);
-buttonElemet.style.visibility = "hidden"
-  const sendButton = document.getElementById("send"+data.BladID);
-  sendButton.style.visibility = "visible";
-  if (sendButton.style.visibility == "visible"){
-    const text = document.getElementById("side"+data.BladID);
-    text.style.visibility = "visible";
-    const sideTal = Number.parseInt(text.innerText,0);
-    this.send(data, sideTal)
+  public go(data: WebAnnoce) {
+    const selectedElement = document.getElementById("selected" + data.OrdreNr) as HTMLSelectElement;
+    const item = selectedElement.options.item(selectedElement.options.selectedIndex);
+    console.log(item.value);
+    const buttonElemet = document.getElementById("ok" + data.OrdreNr);
+    buttonElemet.style.visibility = "hidden"
+    const sendButton = document.getElementById("send" + data.OrdreNr);
+    sendButton.style.visibility = "visible";
+    if (sendButton.style.visibility == "visible") {
 
-    this.ws.UpdateMediePlanNr({update: {OrdreID: data.OrdreNr, Status: this.status }});
-    /**
-     *  If e.CommandName = "Ok" Then
-     Try
-     SqlConn.Open()
-     SqlComm.CommandText = "UPDATE tblAnnoncekontrol SET ErKontrolleret = 0  WHERE (MedieplanNr = " & OrdreID & ") AND (UgeavisID = " & BladID & ")"
-     SqlComm.ExecuteNonQuery()
-     Catch ex As Exception
-     SqlConn.Close()
-     Response.Redirect("FejlEditer.htm")
-     Finally
-     SqlConn.Close()
-     End Try
-     ElseIf e.CommandName = "Ja" Then
-     FejlIAnnonce = 2
-     ElseIf e.CommandName = "Nej" Then
-     FejlIAnnonce = 1
-     Else
-     FejlIAnnonce = 0
-     End If
-     grdOrdrer.EditItemIndex = e.Item.ItemIndex
-     ViewState("FejlIAnnonce") = FejlIAnnonce
-     ShowOrdrer()
-     End If
-     */
-  }
+      const text = document.getElementById("side" + data.OrdreNr) as HTMLInputElement;
+      text.style.visibility = "visible";
+      var sideTal = Number.parseInt(text.value, 0);
+      console.log(text.value);
+this.ws.UpdateAnnonceKontrol({ update: { BladID: data.BladID, OrdreID: data.OrdreNr} }).subscribe(value1 => {
+  console.log("Update Annonncekontrol =   "+ value1.valueOf())
+});
+    }
+
   }
 
 
   selectedVal(val) {
-    console.log("selected value "+ val);
+    console.log("selected value " + val);
   }
 
-  public send(data: WebAnnoce, sideTal:Number){
-
-    /**
-
-     SqlComm.CommandText = "DELETE FROM tblAnnoncekontrol WHERE (MedieplanNr = " & OrdreID & ") AND (UgeavisID = " & BladID & ")"
-     SqlComm.ExecuteNonQuery()
-
-     SqlComm.CommandText = "SELECT DISTINCT COUNT(tblMedieplanLinjer.UgeavisID) AS ManglerKontrol FROM " & _
-     "tblMedieplanNr INNER JOIN tblMedieplanLinjer ON tblMedieplanNr.MedieplanNr = tblMedieplanLinjer.MedieplanNr " & _
-     "AND tblMedieplanNr.AktivVersion = tblMedieplanLinjer.Version LEFT OUTER JOIN " & _
-     "tblAnnoncekontrol ON tblMedieplanLinjer.MedieplanNr = tblAnnoncekontrol.MedieplanNr AND " & _
-     "tblMedieplanLinjer.UgeavisID = tblAnnoncekontrol.UgeavisID WHERE " & _
-     "(tblMedieplanNr.MedieplanNr = " & OrdreID & ") AND " & _
-     "(tblAnnoncekontrol.ErKontrolleret IS NULL OR tblAnnoncekontrol.ErKontrolleret = 0)"
-
-     ManglerKontrol = SqlComm.ExecuteScalar()
-     If ManglerKontrol = 0 Then
-
-     SqlComm.CommandText = "SELECT COUNT(MedieplanNr) AS AntalFejl FROM tblAnnoncekontrol " & _
-     "WHERE(Fejlkode > 0) And (MedieplanNr = " & OrdreID & ")"
-     AntalFejl = SqlComm.ExecuteScalar()
-     If AntalFejl = 0 Then
-
-     SqlComm.CommandText = "SELECT tblMedieplan.Fakturering FROM tblMedieplan INNER JOIN tblMedieplanNr ON " & _
-     "tblMedieplan.MedieplanNr = tblMedieplanNr.MedieplanNr AND tblMedieplan.Version = tblMedieplanNr.AktivVersion " & _
-     "WHERE(tblMedieplanNr.MedieplanNr = " & OrdreID & ")"
-     EnOrdre = SqlComm.ExecuteScalar
-     If EnOrdre = 1 Then
-     Status = 6
-     Else
-     Status = 99
-     End If
-     Else
-     Status = 5
-     End If
-
-     SqlComm.CommandText = "UPDATE tblMedieplan SET Status = " & Status & " FROM tblMedieplan INNER JOIN " & _
-     "tblMedieplanNr ON tblMedieplan.MedieplanNr = tblMedieplanNr.MedieplanNr AND tblMedieplan.Version = " & _
-     "tblMedieplanNr.AktivVersion WHERE (tblMedieplan.MedieplanNr = " & OrdreID & ")"
-     SqlComm.ExecuteNonQuery()
-     SqlComm.CommandText = "UPDATE tblMedieplanNr SET Status = " & Status & " WHERE(MedieplanNr = " & OrdreID & ")"
-     SqlComm.ExecuteNonQuery()
-     End If
-     Catch ex As Exception
-     SqlConn.Close()
-     Response.Redirect("FejlOpdater.htm")
-     Finally
-     SqlConn.Close()
-     End Try
-     If ErrorID = 7 Then
-     Response.Redirect("ForkertPlacering.aspx" & Request.Url.Query & "*" & OrdreID.ToString)
-     End If
-     grdOrdrer.EditItemIndex = -1
-     ViewState("FejlIAnnonce") = 0
-     ShowOrdrer()
-     Else
-     */
-    console.log(this.selectedId);
-    var antalfejl;
-    var ManglerKontrol;
-    this.ws.Delete(data.BladID, data.OrdreNr).subscribe(a =>{
 
 
-    });
-    this.ws.InsertSQL({ insert : {BladID: data.BladID, email: this.email, OrdreID: data.OrdreNr, ErrorID:0, kontrolleretAfDLU: true, SidePlacering: ""+data.SidePlacering}}).subscribe( i => {
 
-
-    });
-
-    this.ws.GetManglerKontrol(data.OrdreNr).subscribe( ma => {
-      ManglerKontrol = ma.toPrecision(0);
-    });
-
-    if(ManglerKontrol == 0) {
-      this.ws.GetAntalFejl(data.OrdreNr).subscribe(an => {
-        antalfejl = an[0];
-      });
-      if (antalfejl == 0) {
-        this.status = 6;
-
-      } else {
-        this.status =99;
-      }
-
-    } else  {
-      this.ws.UpdateMediePlan({update3: { OrdreID: data.OrdreNr, status: this.status}}).subscribe( s => {
-
-        }
-      );
-
-      this.ws.UpdateAnnonceKontrol({})
-
-    }
-
-
-    console.log(data.BladID + ""  + sideTal);
-  }
-
-  public  fejl(da: WebAnnoce){
-    const selectedElement= document.getElementById("selected"+da.BladID) as HTMLSelectElement;
-    const item=  selectedElement.options.item(selectedElement.options.selectedIndex);
-   this.selectedId = Number.parseInt(item.value,0);
+  public fejl(da: WebAnnoce) {
+    const selectedElement = document.getElementById("selected" + da.OrdreNr) as HTMLSelectElement;
+    const item = selectedElement.options.item(selectedElement.options.selectedIndex);
+    this.selectedId = Number.parseInt(item.value, 0);
     console.log(item.value);
-    const  fejl  = document.getElementById("selected"+da.BladID);
+    const fejl = document.getElementById("selected" + da.OrdreNr);
     fejl.style.visibility = "visible";
 
-    const sendButton = document.getElementById("send"+da.BladID);
+    const sendButton = document.getElementById("send" + da.OrdreNr);
     sendButton.style.visibility = "visible";
-    const okButton = document.getElementById("ok"+da.BladID);
+    const okButton = document.getElementById("ok" + da.OrdreNr);
     okButton.style.visibility = "hidden";
-    const text = document.getElementById("side"+da.BladID);
-    text.style.visibility = "hidden";
-
+    const text = document.getElementById("side" + da.OrdreNr);
+    text.style.visibility = "visible";
+    this.ws.UpdateAnnonceKontrol({update: {OrdreID: da.OrdreNr, BladID: da.BladID}}).subscribe(ac =>{
+      console.log(ac.valueOf());
+    });
   }
 
 
-  sendM(data: WebAnnoce) {
+  sendM(data: WebAnnoce ) {
+    const text = document.getElementById("side" + data.OrdreNr) as HTMLInputElement;
+    console.log("side tal " + text.value);
+    this.sidetal = Number.parseInt(text.value);
     console.log(this.selectedId);
     var antalfejl;
     var ManglerKontrol;
-    this.ws.Delete(data.BladID, data.OrdreNr).subscribe(a =>{
+    this.ws.Delete(data.OrdreNr, data.BladID).subscribe(a => {
+  console.log("Delete :=" + a);
+      this.ws.InsertSQL({
+        insert: {
+          OrdreID: data.OrdreNr,
+          SidePlacering: this.sidetal,
+          kontrolleretAfDLU: false,
+          ErrorID: this.selectedId,
+          email: this.value[3],
+          BladID: data.BladID
+        }
+      }).subscribe(ins => {
+        if (ins == 1) {
+          this.ws.GetManglerKontrol(data.OrdreNr).subscribe(mg => {
+            ManglerKontrol = mg;
+
+            if (ManglerKontrol != 0 || ManglerKontrol == 0) {
+              this.ws.GetAntalFejl(data.OrdreNr).subscribe(ant => {
+                antalfejl = ant;
+              }, error => {
+
+              }, ()=>{
 
 
-    });
-    this.ws.InsertSQL({ insert : {BladID: data.BladID, email: this.email, OrdreID: data.OrdreNr, ErrorID:0, kontrolleretAfDLU: true, SidePlacering: ""+data.SidePlacering}}).subscribe( i => {
+                if (antalfejl == 0) {
+                  this.ws.SelectFakturing(data.OrdreNr).subscribe(sf => {
+                    this.erOrdre = sf;
+                  });
+                  if (this.erOrdre == 1) {
+                    this.status = 6;
+                  } else {
+                    this.status = 99;
+                  }
+
+                } else {
+                  this.status = 5;
+                }
+                this.ws.UpdateMediePlan({update3: {OrdreID: data.OrdreNr, status: this.status}}).subscribe(update => {
+                });
+
+                this.ws.UpdateMediePlanNr({update: {Status: this.status, OrdreID: data.OrdreNr}}).subscribe(mpn => {
+
+                });
+              });
 
 
-    });
-
-    this.ws.GetManglerKontrol(data.OrdreNr).subscribe( ma => {
-      ManglerKontrol = ma.toPrecision(0);
-    });
-
-    if(ManglerKontrol == 0) {
-      this.ws.GetAntalFejl(data.OrdreNr).subscribe(an => {
-        antalfejl = an[0];
+            }
+          })
+        }
+      }, error => {
+        console.log(error.toLocaleString());
       });
-      if (antalfejl == 0) {
-        this.status = 6;
-
-      } else {
-        this.status =99;
-      }
-    } else  {
 
 
-    }
+      console.log(data.BladID);
+    }, error => {
+
+      console.log(error.toLocaleString());
+    });
 
 
-    console.log(data.BladID);
   }
 }

@@ -1,14 +1,23 @@
 
 export interface UdsendingKontakter {
-  id: number;
-  bladid: number;
-  navn: string;
-  mail: string;
-  telefonnummer: number;
-  type: number;
-  titel: number;
+  Name;
+  Email;
+  KontaktType;
+  Telefonnummer;
+  BladId;
+  Id;
+  Titel;
+  KontaktTyper: KontaktTyper[]
+  KontaktTitlers: KontaktTitlers[]
 }
 
-export interface RootObjectUdsendingKontakter {
-  udsendingKontakter: UdsendingKontakter;
+export interface  KontaktTyper {
+  id;
+  titel;
 }
+
+export  interface  KontaktTitlers{
+  id;
+  Titel;
+}
+

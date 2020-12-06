@@ -3,7 +3,8 @@ import {environment} from "../environments/environment";
 import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {StamBladUdSendingKontakt} from "../models/stam-blad-ud-sendingkontakt";
-import {RootObjectUdsendingKontakter} from "../models/udsending-kontakter";
+import { UdsendingKontakter} from "../models/udsending-kontakter";
+import {StamBladUdsending} from "../models/stam-blad-udsending";
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,15 @@ export class KontaktService {
   constructor(private  http: HttpClient) { }
 
 
-  public GetStamBladUdsendingkontakterById(id: number): Observable<StamBladUdSendingKontakt[]> {
-      const url = this.baseUrl + 'kontakter/' + id;
-      return  this.http.get<StamBladUdSendingKontakt[]>(url).pipe();
+  public GetStamBladUdsendingkontakterByNavn(navn: string): Observable<UdsendingKontakter[]> {
+    const url = this.baseUrl + 'kontakter-api/api/kontakt?name=' +navn;
+    return  this.http.get<UdsendingKontakter[]>(url).pipe();
   }
 
+
+
   public UpdateStamBladUdendingKontakterByID(kontakt: StamBladUdSendingKontakt[]): Observable<any> {
-    const url = this.baseUrl + 'kontakter/';
+    const url = this.baseUrl + 'kontakt-api/api/kontakter/';
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'});
     return this.http.post(url, JSON.stringify(kontakt), {headers: headers}).pipe();
@@ -28,10 +31,10 @@ export class KontaktService {
 
   }
 
-  public  UpdateKontakt(kontakt: RootObjectUdsendingKontakter) {
+  public  UpdateKontakt(kontakt: UdsendingKontakter) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'});
-    const url = this.baseUrl + 'kontater/';
+    const url = this.baseUrl + 'kontakt-api/api/kontakter/';
 
     return this.http.post(url, JSON.stringify(kontakt), {headers: headers} ).pipe();
 

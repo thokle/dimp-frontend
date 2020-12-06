@@ -1,16 +1,34 @@
 <p>kontakter works!</p>
-<mat-select ><mat-option *ngFor="let t of kontaktTyper" [value]="t.titel" >{{t.titel}}</mat-option></mat-select>
+<ng-container *ngIf="kontaker != null ">
+
 <table id="kontaktTable">
   <tr *ngFor="let k of kontaker">
     <td>{{k.BladId}}</td>
-    <td><input type="text" id="name" value="{{k.Name}}" (keyup.tab)="saveToArray(k.Title,k.KontaktType,k.telefonnummer,k.BladId, k.Email,k.Name)" ></td>
-    <td><input  type="email" id="email" value="{{k.Email}}" (keyup.tab)="saveToArray(k.Title,k.KontaktType,k.telefonnummer,k.BladId, k.Email,k.Name)" ></td>
-<td>{{k.KontaktType}}</td>
-    <td><input type="tel" value="{{k.telefonnummer}}" name="tlf" (keyup.tab)="saveToArray(k.Title,k.KontaktType,k.telefonnummer,k.BladId, k.Email,k.Name)"></td>
-    <td>
+    <td><input type="text" id="name" value="{{k.Name}}" (keyup.tab)="saveToArray(k.Titel,k.KontaktType,k.Telefonnummer,k.BladId, k.Email,k.Name)" ></td>
+    <td><input  type="email" id="email" value="{{k.Email}}" (keyup.tab)="saveToArray(k.Titel,k.KontaktType,k.Telefonnummer,k.BladId, k.Email,k.Name)" ></td>
+    <td><input type="tel" value="{{k.Telefonnummer}}" name="tlf" (keyup.tab)="saveToArray(k.Telefonnummer,k.KontaktType,k.Telefonnummer,k.BladId, k.Email,k.Name)"></td>
+    <td><mat-select [placeholder]="k.KontaktType"><mat-option *ngFor="let w of k.KontaktTyper"  value="{{w.titel}}">{{w.titel}}</mat-option></mat-select>
+
      </td>
-<td><mat-select [placeholder]="k.Title"><mat-option *ngFor="let w of kontaktTitlers"  value="{{w.Titel}}">{{w.Titel}}</mat-option></mat-select></td>
+<td><mat-select [placeholder]="k.Titel"><mat-option *ngFor="let w of k.KontaktTitlers"  value="{{w.Titel}}">{{w.Titel}}</mat-option></mat-select></td>
   </tr>
 
 </table>
-<button mat-button  (click)="update()">Opdater</button>
+  <button mat-button  (click)="update()">Opdater</button>
+</ng-container>
+<ng-container *ngIf="kontaker.length ==0">
+  <table id="kontaktTable2">
+    <tr *ngFor="let k of kontaker">
+      <td>{{k.BladId}}</td>
+      <td><input type="text"  ></td>
+      <td><input  type="email"  ></td>
+      <td>{{k.KontaktType}}</td>
+      <td><input type="tel" ></td>
+      <td>
+      </td>
+      <td><mat-select [placeholder]="k.Titel"><mat-option *ngFor="let w of k.KontaktTitlers"  value="{{w.Titel}}">{{w.Titel}}</mat-option></mat-select></td>
+    </tr>
+
+  </table>
+</ng-container>
+
