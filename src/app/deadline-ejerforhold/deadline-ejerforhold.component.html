@@ -3,9 +3,12 @@
   <table id="ejerforholdtable">
     <tr><th>Blad ID</th><th>Materiale Deadline Dat</th><th>MaterialeTid</th><th>OrdreDeadline</th></tr>
     <tr *ngFor="let l of d.Deadliens">
-      <td>{{l.BladID}}</td>
+      <td>< {{l.BladID}}</td>
       <td>{{l.MaterialeDeadline }}</td>
-      <td>{{l.MaterialeTid}}</td>
+      <td><mat-select [placeholder]="l.MaterialeDeadline" *ngFor="let da of do" [value]="da.id">{{da.dato}}</mat-select>
+      </td>
+<td>
+        {{l.MaterialeTid}}</td>
       <td>{{l.OrdreDeadline}}</td>
       <td>{{l.OrdreTid}}</td>
       <td>{{l.UdgivelsesDato}}</td>
