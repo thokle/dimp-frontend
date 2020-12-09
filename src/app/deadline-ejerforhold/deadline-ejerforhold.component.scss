@@ -1,0 +1,32 @@
+mat-nav-list.list-horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+
+table {
+  width: 80%;
+}
+
+#ejerforholdtable {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#ejerforholdtable td, #kontaktTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#ejerforholdtable tr:nth-child(even){background-color: #f2f2f2;}
+
+#ejerforholdtable tr:hover {background-color: #ddd;}
+
+#ejerforholdtable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}

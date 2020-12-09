@@ -3,6 +3,7 @@ import {environment} from "../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Dead, Deadline} from "../models/deadline";
+import {EjerforholdDeadline} from "../models/ejerforhold-deadline";
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,15 @@ export class DeadlineService {
 
 
   public  GetDeadlimes(bladid: number, type:number): Observable<Dead[]>{
-    const  url = this.baseUrl + 'deadline/' + bladid + '/' + type;
-    return  this.http.get<Dead[]>(url);
+    const  url = this.baseUrl + 'dimp/deadline/' + bladid + '/' + type;
+    return  this.http.get<Dead[]>(url).pipe();
 
+}
+
+public GetDeadlineEjerforhold(ejerforhold: string): Observable<EjerforholdDeadline[]> {
+    const url = this.baseUrl +  'dimp/deadline/' +ejerforhold;
+
+    return  this.http.get<EjerforholdDeadline[]>(url).pipe();
 }
 
   public  Post(deadline: Deadline): Observable<any>{

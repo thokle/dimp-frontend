@@ -20,3 +20,6 @@
 <app-annonce-kontrol [value]="value2"></app-annonce-kontrol>
 
 </ng-container>
+<ng-container *ngIf="isEjerforhold">
+  <app-deadline-ejerforhold [ejerforhold]="ejerforhold"></app-deadline-ejerforhold>
+</ng-container>

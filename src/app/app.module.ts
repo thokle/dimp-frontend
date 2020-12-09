@@ -24,6 +24,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AnnonceKontrolComponent } from './annonce-kontrol/annonce-kontrol.component';
+import { DeadlineEjerforholdComponent } from './deadline-ejerforhold/deadline-ejerforhold.component';
 
 
 
@@ -34,7 +35,8 @@ import { AnnonceKontrolComponent } from './annonce-kontrol/annonce-kontrol.compo
     KontakterComponent,
     DeadlineComponent,
     DeadLine2Component,
-    AnnonceKontrolComponent
+    AnnonceKontrolComponent,
+    DeadlineEjerforholdComponent
   ],
     imports: [
         BrowserModule,

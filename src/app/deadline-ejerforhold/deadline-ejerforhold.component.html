@@ -1,0 +1,18 @@
+<div *ngFor="let d of deadline">
+  <h4>{{d.Navn}}</h4>
+  <table id="ejerforholdtable">
+    <tr><th>Blad ID</th><th>Materiale Deadline Dat</th><th>MaterialeTid</th><th>OrdreDeadline</th></tr>
+    <tr *ngFor="let l of d.Deadliens">
+      <td>{{l.BladID}}</td>
+      <td>{{l.MaterialeDeadline }}</td>
+      <td>{{l.MaterialeTid}}</td>
+      <td>{{l.OrdreDeadline}}</td>
+      <td>{{l.OrdreTid}}</td>
+      <td>{{l.UdgivelsesDato}}</td>
+      <td>{{l.UdkommerIkke}}</td>
+      <td>{{l.Uge }}</td>
+    </tr>
+    <div><button (click)="update(d)">Opgrader</button></div>
+  </table>
+
+</div>

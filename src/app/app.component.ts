@@ -25,6 +25,8 @@ export class AppComponent implements  OnInit {
   isAnnoncekontrol= false;
 name= "";
   value2: any;
+  ejerforhold: any;
+  isEjerforhold: boolean = false;
 
 
   constructor(private router: Router, private  activeRouter: ActivatedRoute) {
@@ -43,18 +45,21 @@ name= "";
         console.log('App Email  ' + this.stamBladEmail);
         this.isPriser = true;
         this.isKomtakter = false;
+        this.isEjerforhold = false;
       } else  if(value.has('bladid')){
 
         this.bladid =  Number(value.get('bladid'));
         console.log(this.bladid);
         this.isPriser = false;
         this.isKomtakter = true;
+        this.isEjerforhold = false;
       } else if (value.has('deadlines')){
         this.bladid = Number(value.get('deadlines'));
         this.isPriser= false;
         this.isKomtakter  = false;
         this.isDeadLine2 = false;
         this.isDeadline1 = true;
+        this.isEjerforhold = false;
       }
       else if (value.has('deadlines2')){
         this.bladid = Number(value.get('deadlines2'));
@@ -62,6 +67,7 @@ name= "";
         this.isKomtakter  = false;
         this.isDeadLine2 = true;
         this.isDeadline1 = false;
+        this.isEjerforhold = false;
       } else if (value.has('annoncekontrol')){
         const val = value.get('annoncekontrol');
         this.value2 =  val;
@@ -70,6 +76,7 @@ name= "";
         this.isDeadLine2 = false;
         this.isDeadline1 = false;
         this.isAnnoncekontrol = true;
+        this.isEjerforhold = false;
       } else  if(value.has('kontakt')){
         this.name  = value.get('kontakt');
 
@@ -78,6 +85,15 @@ name= "";
         this.isDeadLine2 = false;
         this.isDeadline1 = false;
         this.isAnnoncekontrol = false;
+        this.isEjerforhold = false;
+      } else  if(value.has('ejerforhold')){
+        this.ejerforhold = value.get('ejerforhold');
+        this.isPriser= false;
+        this.isKomtakter  = false;
+        this.isDeadLine2 = false;
+        this.isDeadline1 = false;
+        this.isAnnoncekontrol = false;
+        this.isEjerforhold = true;
       }
 
     });
