@@ -86,6 +86,7 @@ type
   }
 
   ngOnInit(): void {
+
     this.getData();
   }
 

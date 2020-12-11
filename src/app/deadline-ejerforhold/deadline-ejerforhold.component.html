@@ -1,19 +1,27 @@
 <div *ngFor="let d of deadline">
   <h4>{{d.Navn}}</h4>
   <table id="ejerforholdtable">
-    <tr><th>Blad ID</th><th>Materiale Deadline Dat</th><th>MaterialeTid</th><th>OrdreDeadline</th></tr>
+    <tr><th>Uge</th><th>Udkommer ikke</th><th>Udgivelsesdato</th><th>Deadline for ordre</th><th>Ordre tid</th><th>Udgiveles Dato</th><th>DeadLines for ordrer</th></tr>
     <tr *ngFor="let l of d.Deadliens">
-      <td>< {{l.BladID}}</td>
-      <td>{{l.MaterialeDeadline }}</td>
-      <td><mat-select [placeholder]="l.MaterialeDeadline" *ngFor="let da of do" [value]="da.id">{{da.dato}}</mat-select>
-      </td>
-<td>
-        {{l.MaterialeTid}}</td>
-      <td>{{l.OrdreDeadline}}</td>
-      <td>{{l.OrdreTid}}</td>
-      <td>{{l.UdgivelsesDato}}</td>
-      <td>{{l.UdkommerIkke}}</td>
-      <td>{{l.Uge }}</td>
+<td><select (selectionchange)="selectedWeek($event, l)">
+
+  <option selected value="{{l.Uge}}">{{l.Uge}}</option>
+  <option *ngFor="let w of weeks" value="{{w.id}}">{{w.weeknumber}}</option>
+</select></td>
+<td><input type="checkbox" value="{{l.UdkommerIkke}}"></td>
+      <td><select (selectionchange)="selectUdGivelsesDato($event, l)">
+<option selected value="{{l.UdgivelsesDato }}">{{l.UdgivelsesDato}}</option>
+<option *ngFor="let d of dates" value="{{d.id}}">{{d.date}}</option>
+      </select></td>
+      <td></td>
+      <td><select (selectionchange)="selectedOrdreDeadline($event, l)">
+        <option selected value="{{l.OrdreDeadline }}">{{l.OrdreDeadline}}</option>
+        <option  *ngFor="let d of dates" value="{{d.date}}">{{d.date}}</option>
+      </select></td>
+      <td><select >
+        <option selected value="{{l.OrdreTid}}"></option>
+        <option *ngFor="let t of tid" value="{{t.tid}}">{{t.tid}}</option>
+      </select></td>
     </tr>
     <div><button (click)="update(d)">Opgrader</button></div>
   </table>
