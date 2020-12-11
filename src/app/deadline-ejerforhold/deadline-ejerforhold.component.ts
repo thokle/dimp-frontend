@@ -84,7 +84,14 @@ this.getWeekNumber();
   }
 
   update(l: any) {
+    this.deadline.forEach(value =>
+    {
+    value.Deadliens.forEach(value1 => {
 
+      this.ds.Post({dead: value1});
+    });
+
+    });
   }
    getWeekNumber() {
      for(let i=1; i<=52; i++){
@@ -93,14 +100,46 @@ this.getWeekNumber();
   }
 
   selectedWeek($event: Event, l: Dead) {
+    var sel = document.getElementById("Week"+l.BladID) as HTMLSelectElement;
+     this.deadline.find(value => {
+     let index =  value.Deadliens.findIndex( value1 => {
+        value1.Uge === l.Uge
+      });
+     value.Deadliens[index].Uge =  String(sel.value);
+
+    });
 
   }
 
   selectUdGivelsesDato($event: Event, l: Dead) {
-    
+
+
+    this.deadline.find(value => {
+    let index =  value.Deadliens.findIndex(value1 => {
+        value1.UdgivelsesDato == l.UdgivelsesDato && value1.BladID == l.BladID;
+      } );
+
+      value[index].UdgivelsesDato = 0;
+    })
   }
 
   selectedOrdreDeadline($event: Event, l: Dead) {
-    
+let sel = document.getElementById('OrdreDeadLine'+l.BladID);
+
+this.deadline.forEach(value => {
+
+});
+  }
+
+  selectedUdgivelsesDato($event: Event, l: Dead) {
+
+  }
+
+  selectOdreTid($event: Event, l: Dead) {
+
+  }
+
+  selectedMateriale($event: Event, l: Dead) {
+
   }
 }
