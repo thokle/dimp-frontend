@@ -182,8 +182,6 @@ export class DeadlineEjerforholdComponent implements OnInit {
       });
       value.Deadliens[index].MaterialeTid = sel.value;
     });
-
-
   }
 
   opret($event: MouseEvent) {
@@ -199,6 +197,17 @@ export class DeadlineEjerforholdComponent implements OnInit {
       });
 
       value.Deadliens[index].MaterialeDeadline = Number(sel.value);
+    });
+  }
+
+  udkommer($event: MouseEvent, l: Dead) {
+    let sel = document.getElementById('udkommer'+l.Linje) as HTMLElement;
+
+    this.deadline.forEach(value => {
+      let index = value.Deadliens.findIndex(value1 => {
+        return value1.Linje == l.Linje;
+      });
+      value.Deadliens[index].UdkommerIkke = Boolean(sel.innerHTML);
     });
 
   }
