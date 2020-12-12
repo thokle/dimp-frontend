@@ -13,33 +13,28 @@
       <th>DeadLines for Materiale</th>
       <th>D</th>
     <tr *ngFor="let l of d.Deadliens">
-      <td><select  id="Week{{l.BladID}}}" (selectionchange)="selectedWeek($event, l)">
+      <td><select  id="Week{{l.Linje}}}" (selectionchange)="selectedWeek($event, l)">
 
         <option selected value="{{l.Uge}}">{{l.Uge}}</option>
         <option *ngFor="let w of weeks" value="{{w.id}}">{{w.weeknumber}}</option>
       </select></td>
       <td><input type="checkbox" value="{{l.UdkommerIkke}}" id="udkommer{{l.BladID}}" ></td>
       <td><select id="UdGivelsesDato{{l.Linje}}" (change)="selectUdGivelsesDato($event, l)">
-        <option selected value="{{l.UdgivelsesDato }}">{{l.UdgivelsesDato}}</option>
+        <option selected value="{{l.UdgivelsesDato}}">{{l.UdgivelsesDato}}</option>
         <option *ngFor="let d of dates" value="{{d.id}}">{{d.date}}</option>
       </select></td>
 
-      <td><select id="OrdreDeadLine{{l.BladID}}}" (selectionchange)="selectedOrdreDeadline($event, l)">
+      <td><select id="OrdreDeadLine{{l.Linje}}}" (selectionchange)="selectedOrdreDeadline($event, l)">
         <option selected value="{{l.OrdreDeadline }}">{{l.OrdreDeadline}}</option>
         <option *ngFor="let d of dates" value="{{d.date}}">{{d.date}}</option>
       </select></td>
-      <td><select id="OrdreTid{{l.BladID}}" (selectionchange)="selectOdreTid($event, l)" >
+      <td><select id="OrdreTid{{l.Linje}}" (selectionchange)="selectOdreTid($event, l)" >
         <option selected value="{{l.OrdreTid}}">{{l.OrdreTid}}</option>
         <option *ngFor="let t of tid" value="{{t.tid}}">{{t.tid}}</option>
       </select></td>
+
       <td>
-        <select id="UdGivelsesDato{{l.BladID}}" (selectionchange)="selectedUdgivelsesDato($event, l)">
-<option selected value="{{l.UdgivelsesDato}}">{{l.UdgivelsesDato}}</option>
-          <option *ngFor="let d of dates" value="{{d.date}}">{{d.date}}</option>
-        </select>
-      </td>
-      <td>
-        <select  id="Materiale{{l.BladID}}" (selectionchange)="selectedMateriale($event, l)">
+        <select  id="Materiale{{l.Linje}}" (selectionchange)="selectedMateriale($event, l)">
           <option selected value="{{l.MaterialeTid}}">{{l.MaterialeTid}}</option>
           <option *ngFor="let t of tid" value="{{t.tid}}">{{t.tid}}</option>
         </select>
