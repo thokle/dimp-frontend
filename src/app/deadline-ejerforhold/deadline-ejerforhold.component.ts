@@ -112,14 +112,17 @@ this.getWeekNumber();
   }
 
   selectUdGivelsesDato($event: Event, l: Dead) {
-
+   let id = document.getElementById('UdGivelsesDato'+l.Linje) as HTMLSelectElement;
+   let e =  id.options.item(id.options.selectedIndex).value
+    console.log('Selected Element   ' + e);
 
     this.deadline.find(value => {
+      console.log(value.Deadliens);
     let index =  value.Deadliens.findIndex(value1 => {
-        value1.UdgivelsesDato == l.UdgivelsesDato && value1.BladID == l.BladID;
+       return  Number(value1.UdgivelsesDato) == Number(l.UdgivelsesDato);
       } );
 
-      value[index].UdgivelsesDato = 0;
+      value[index].UdgivelsesDato = id.value;
     })
   }
 
@@ -141,5 +144,12 @@ this.deadline.forEach(value => {
 
   selectedMateriale($event: Event, l: Dead) {
 
+  }
+
+  opret($event: MouseEvent) {
+
+  }
+
+  selectMaterialDeadline($event: Event, l: Dead) {
   }
 }

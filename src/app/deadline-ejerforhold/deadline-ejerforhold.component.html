@@ -7,11 +7,11 @@
       <th>Uge</th>
       <th>Udkommer ikke</th>
       <th>Udgivelsesdato</th>
-      <th>Deadline for ordre</th>
+      <th>DeadLines for ordrer</th>
       <th>Ordre tid</th>
       <th>Udgiveles Dato</th>
-      <th>DeadLines for ordrer</th>
-    </tr>
+      <th>DeadLines for Materiale</th>
+      <th>D</th>
     <tr *ngFor="let l of d.Deadliens">
       <td><select  id="Week{{l.BladID}}}" (selectionchange)="selectedWeek($event, l)">
 
@@ -19,37 +19,95 @@
         <option *ngFor="let w of weeks" value="{{w.id}}">{{w.weeknumber}}</option>
       </select></td>
       <td><input type="checkbox" value="{{l.UdkommerIkke}}" id="udkommer{{l.BladID}}" ></td>
-      <td><select id="UdGivelsesDato{{l.BladID" (selectionchange)="selectUdGivelsesDato($event, l)">
+      <td><select id="UdGivelsesDato{{l.Linje}}" (change)="selectUdGivelsesDato($event, l)">
         <option selected value="{{l.UdgivelsesDato }}">{{l.UdgivelsesDato}}</option>
         <option *ngFor="let d of dates" value="{{d.id}}">{{d.date}}</option>
       </select></td>
-      <td></td>
+
       <td><select id="OrdreDeadLine{{l.BladID}}}" (selectionchange)="selectedOrdreDeadline($event, l)">
         <option selected value="{{l.OrdreDeadline }}">{{l.OrdreDeadline}}</option>
         <option *ngFor="let d of dates" value="{{d.date}}">{{d.date}}</option>
       </select></td>
       <td><select id="OrdreTid{{l.BladID}}" (selectionchange)="selectOdreTid($event, l)" >
-        <option selected value="{{l.OrdreTid}}"></option>
+        <option selected value="{{l.OrdreTid}}">{{l.OrdreTid}}</option>
         <option *ngFor="let t of tid" value="{{t.tid}}">{{t.tid}}</option>
       </select></td>
       <td>
         <select id="UdGivelsesDato{{l.BladID}}" (selectionchange)="selectedUdgivelsesDato($event, l)">
-<option selected value="{{l.UdgivelsesDato}}"></option>
+<option selected value="{{l.UdgivelsesDato}}">{{l.UdgivelsesDato}}</option>
           <option *ngFor="let d of dates" value="{{d.date}}">{{d.date}}</option>
         </select>
       </td>
       <td>
         <select  id="Materiale{{l.BladID}}" (selectionchange)="selectedMateriale($event, l)">
-          <option selected value="{{l.MaterialeTid}}"></option>
+          <option selected value="{{l.MaterialeTid}}">{{l.MaterialeTid}}</option>
           <option *ngFor="let t of tid" value="{{t.tid}}">{{t.tid}}</option>
         </select>
 
       </td>
+      <td>
+        <select id="MaterialeDeadLine{{l.BladID}}" (selectionchange)="selectMaterialDeadline($event, l)">
+          <option selected value="{{l.MaterialeDeadline}}">{{l.MaterialeDeadline}}</option>
+        </select>
+      </td>
     </tr>
 
   </table>
+
   <div>
     <button (click)="update(d)">Opgrader</button>
   </div>
 </div>
+  <div>
+    <table >
+
+      <tr>
+        <th>Uge</th>
+        <th>Udkommer ikke</th>
+        <th>Udgivelsesdato</th>
+        <th>DeadLines for ordrer</th>
+        <th>Ordre tid</th>
+        <th>Udgiveles Dato</th>
+        <th>DeadLines for Materiale</th>
+      </tr>
+      <tr >
+        <td><select  id="Week" >
+
+
+          <option *ngFor="let w of weeks" value="{{w.id}}">{{w.weeknumber}}</option>
+        </select></td>
+        <td><input type="checkbox" value="" id="udkommer" ></td>
+        <td><select id="Udko" >
+
+          <option *ngFor="let d of dates" value="{{d.id}}">{{d.date}}</option>
+        </select></td>
+        <td></td>
+        <td><select id="OrdreDeadLine" >
+
+          <option *ngFor="let d of dates" value="{{d.date}}">{{d.date}}</option>
+        </select></td>
+        <td><select id="OrdreTid" >
+
+          <option *ngFor="let t of tid" value="{{t.tid}}">{{t.tid}}</option>
+        </select></td>
+        <td>
+          <select id="UdGivelsesDato" >
+
+            <option *ngFor="let d of dates" value="{{d.date}}">{{d.date}}</option>
+          </select>
+        </td>
+        <td>
+          <select  id="Materiale" >
+
+            <option *ngFor="let t of tid" value="{{t.tid}}">{{t.tid}}</option>
+          </select>
+
+        </td>
+
+        <td><button (click)="opret($event)">Opret</button></td>
+      </tr>
+
+    </table>
+
+  </div>
 </div>
