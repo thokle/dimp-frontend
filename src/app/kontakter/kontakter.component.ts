@@ -7,6 +7,7 @@ import { UdsendingKontakter} from "../../models/udsending-kontakter";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {OpretKontaktDialogComponent} from "../opret-kontakt-dialog/opret-kontakt-dialog.component";
+import {ActivatedRoute} from "@angular/router";
 
 export  interface  Titler {
   id;
@@ -33,7 +34,8 @@ export class KontakterComponent implements OnInit {
   selectedKontaktType;
   selelectKontatkTitel
 
-  constructor(private ks: KontaktService , private  fb: FormBuilder, private snackBar: MatSnackBar, private diaog: MatDialog) {
+  constructor(private ks: KontaktService , private  fb: FormBuilder, private snackBar: MatSnackBar, private diaog: MatDialog, private  acRoute: ActivatedRoute) {
+
 fb.group({
   Telefonnummer: [],
   BladId: [],
