@@ -26,7 +26,7 @@ export class PriceWebService {
 
 
   public GetBlade(email: string): Observable<Blad[]> {
-    let url = this.baseurl + 'webprice/'+email;
+    let url = this.baseurl + 'kontakter-api/api/PriserTilWeb?email='+email;
     return this.http.get<Blad[]>(url).pipe();
   }
 
@@ -35,7 +35,7 @@ export class PriceWebService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'});
 
-    let url = this.baseurl + 'webprice';
+    let url = this.baseurl + 'kontakter-api/api/PriserTilWeb';
     return this.http.post(url, JSON.stringify(updataPrice), {headers: headers}).pipe();
 
 

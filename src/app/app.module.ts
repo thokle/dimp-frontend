@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {PriceWebService} from "../services/price-web.service";
 import { PriserComponent } from './priser/priser.component';
-import {RouterModule, RouterStateSnapshot} from "@angular/router";
+import {RouterModule, RouterStateSnapshot, Routes} from "@angular/router";
 import {Location} from "@angular/common";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatListModule} from "@angular/material/list";
@@ -25,7 +25,17 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AnnonceKontrolComponent } from './annonce-kontrol/annonce-kontrol.component';
 import { DeadlineEjerforholdComponent } from './deadline-ejerforhold/deadline-ejerforhold.component';
+import { OpretKontaktDialogComponent } from './opret-kontakt-dialog/opret-kontakt-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
+const routes: Routes = [ {
+path: 'deadline/:id' , component: DeadlineComponent
+},
+  {path: 'deadline2/:id' , component: DeadLine2Component},
+  {path: 'kontakter', component: KontakterComponent},
+  {path: 'priser/:stamblademail', component: PriserComponent}
+]
 
 
 @NgModule({
@@ -36,9 +46,11 @@ import { DeadlineEjerforholdComponent } from './deadline-ejerforhold/deadline-ej
     DeadlineComponent,
     DeadLine2Component,
     AnnonceKontrolComponent,
-    DeadlineEjerforholdComponent
+    DeadlineEjerforholdComponent,
+    OpretKontaktDialogComponent
   ],
     imports: [
+      RouterModule.forRoot(routes),
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
@@ -52,9 +64,10 @@ import { DeadlineEjerforholdComponent } from './deadline-ejerforhold/deadline-ej
         MatSelectModule,
         MatInputModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+      MatDialogModule
 
-    ],
+          ],
   providers: [PriceWebService, Location, KontaktService, NewPriserService],
   bootstrap: [AppComponent]
 })

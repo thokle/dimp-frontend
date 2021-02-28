@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: '/'
+  url: 'http://dimp2.dk/'
 };

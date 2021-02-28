@@ -5,19 +5,20 @@ export interface UdsendingKontakter {
   KontaktType;
   Telefonnummer;
   BladId;
-  Id;
+  Id?;
   Titel;
-  KontaktTyper: KontaktTyper[]
-  KontaktTitlers: KontaktTitlers[]
+  KontaktTyper?: KontaktTyper[]
+  KontaktTitlers?: KontaktTitlers[]
 }
 
 export interface  KontaktTyper {
-  id;
-  titel;
+  Id;
+  Titel;
 }
 
 export  interface  KontaktTitlers{
-  id;
+  TitelID;
   Titel;
 }
+
 

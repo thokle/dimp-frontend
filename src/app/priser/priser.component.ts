@@ -7,6 +7,7 @@ import {Location} from "@angular/common";
 import {concatMap} from "rxjs/operators";
 import {Price} from "../../models/update-priser";
 import {NewPriserService} from "../../services/new-priser.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-priser',
@@ -38,7 +39,7 @@ export class PriserComponent implements OnInit {
   @Input()
   public  email;
 
-  constructor(private  service: PriceWebService, private  newPriserService: NewPriserService) {
+  constructor(private  service: PriceWebService, private  newPriserService: NewPriserService, private  snack:MatSnackBar) {
 
 
 
@@ -159,9 +160,10 @@ consoleLog(){
     this.blad.forEach(value => {
       value.tempPriser.forEach(pris => {
         let updatePris: Price = { priceWeb: {bladID: pris.bladID, ControlNavn: '',  Farve4Max: pris.Farve4Max, Farve4Min: pris.Farve4Min, Farve4Pris: pris.Farve4Pris, FarveMax: pris.FarveMax,
-            FarveMin: pris.FarveMin, FarvePris:pris.FarvePris, FormatFra: pris.FormatFra, FormatTil: pris.FormatTil, mmPris: pris.mmPris , PlaceringID: pris.PlaceringID, PrislisteID: pris.PlaceringID, År: pris.Year} };
+            FarveMin: pris.FarveMin, FarvePris:pris.FarvePris, FormatFra: pris.FormatFra, FormatTil: pris.FormatTil, mmPris: pris.mmPris , PlaceringID: pris.PlaceringID, PrislisteID: pris.PlaceringID, År: pris.Year, ErMeldInd: true}}
         this.service.UpDatePrice(
              updatePris    ).pipe().subscribe(value1 => {
+               this.snack.open('pris er opdateret')
         }, error => {
           console.log(error);
         },()=> {

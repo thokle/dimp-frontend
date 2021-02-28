@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {DeadlineService} from "../../services/deadline.service";
 import {Dead} from "../../models/deadline";
 import {EjerforholdDeadline} from "../../models/ejerforhold-deadline";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 interface Year {
@@ -90,7 +91,7 @@ export class DeadlineEjerforholdComponent implements OnInit {
       tid: '24:00'
     }];
 
-  constructor(private ds: DeadlineService) {
+  constructor(private ds: DeadlineService, private  _snack: MatSnackBar) {
 
 
   }
@@ -98,21 +99,18 @@ export class DeadlineEjerforholdComponent implements OnInit {
   ngOnInit(): void {
     this.getWeekNumber();
 
-
     console.log(this.dates);
     this.ds.GetDeadlineEjerforhold(this.ejerforhold).subscribe(ej => {
       this.deadline = ej;
     });
-
-
   }
 
-  update(l: any) {
+  update() {
     this.deadline.forEach(value => {
       value.Deadliens.forEach(value1 => {
-
         this.ds.Post({dead: value1}).subscribe(value2 => {
           console.log(value2);
+          this._snack.open('Deadline for ' + value1.BladID + ' opdateret');
         });
       });
 
@@ -131,7 +129,10 @@ export class DeadlineEjerforholdComponent implements OnInit {
       let index = value.Deadliens.findIndex(value1 => {
        return  value1.Uge == l.Uge
       });
-      value.Deadliens[index].Uge = String(sel.value);
+      if(index !== -1) {
+        value.Deadliens[index].Uge = String(sel.value);
+      }
+
 
     });
 
@@ -148,7 +149,11 @@ export class DeadlineEjerforholdComponent implements OnInit {
         return Number(value1.UdgivelsesDato) == Number(l.UdgivelsesDato);
       });
 
-      value.Deadliens[index].UdgivelsesDato =  Number(id.value);
+      if(index != -1) {
+        value.Deadliens[index].UdgivelsesDato = Number(id.value);
+      }
+
+      return;
     })
   }
 
@@ -158,7 +163,9 @@ export class DeadlineEjerforholdComponent implements OnInit {
       let index = value.Deadliens.findIndex(value1 => {
         return Number(value1.OrdreTid) == Number(l.OrdreTid);
       });
-      value[index].OrdreTid = sel.value;
+      if(index !== -1) {
+        value.Deadliens[index].OrdreTid = sel.value;
+      }
     });
   }
 
@@ -169,7 +176,9 @@ export class DeadlineEjerforholdComponent implements OnInit {
       let index = value.Deadliens.findIndex(value1 => {
         return Number(value1.OrdreTid) == Number(l.OrdreTid);
       });
-      value.Deadliens[index].OrdreTid = sel.value;
+      if(index !== -1 ){
+        value.Deadliens[index].OrdreTid = sel.value;
+      }
     });
   }
 
@@ -180,7 +189,9 @@ export class DeadlineEjerforholdComponent implements OnInit {
       let index = value.Deadliens.findIndex(value1 => {
         return Number(value1.MaterialeTid) == Number(l.MaterialeTid);
       });
-      value.Deadliens[index].MaterialeTid = sel.value;
+      if(index !== -1) {
+        value.Deadliens[index].MaterialeTid = sel.value;
+      }
     });
   }
 
@@ -195,8 +206,10 @@ export class DeadlineEjerforholdComponent implements OnInit {
       let index = value.Deadliens.findIndex(value1 => {
         return value1.MaterialeDeadline == l.MaterialeDeadline;
       });
+if(index !== -1) {
+  value.Deadliens[index].MaterialeDeadline = Number(sel.value);
+}
 
-      value.Deadliens[index].MaterialeDeadline = Number(sel.value);
     });
   }
 
@@ -207,7 +220,10 @@ export class DeadlineEjerforholdComponent implements OnInit {
       let index = value.Deadliens.findIndex(value1 => {
         return value1.Linje == l.Linje;
       });
-      value.Deadliens[index].UdkommerIkke = Boolean(sel.innerHTML);
+      if(index !== -1){
+        value.Deadliens[index].UdkommerIkke = Boolean(sel.innerHTML);
+      }
+
     });
 
   }

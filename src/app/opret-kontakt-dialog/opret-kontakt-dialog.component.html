@@ -1,0 +1,26 @@
+<form [formGroup]="fg">
+  <mat-form-field appearance="fill">
+    <mat-select [(ngModel)]="selectedType" placeholder="Vælg type" formControlName="kontaktType">
+      <mat-option *ngFor="let t of typer" value="{{t.Id}}">{{t.Titel}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-select [(ngModel)]="selectedTitel" placeholder="Vælg Titel"  formControlName="titel">
+      <mat-option *ngFor="let t of titel" value="{{t.TitelID}}">{{t.Titel}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Name</mat-label>
+  <input matInput formControlName="name" required type="text">
+</mat-form-field>
+  <mat-form-field appearance="fill">
+<mat-label>E-mail</mat-label>
+    <input type="email" matInput formControlName="email">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+<mat-label>Telefon nummer</mat-label>
+    <input type="tel" matInput formControlName="telefonnummer">
+  </mat-form-field>
+</form>
+<button mat-flat-button (click)="opret()">Opret Kontakt</button>
+

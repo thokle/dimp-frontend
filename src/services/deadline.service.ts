@@ -21,7 +21,7 @@ export class DeadlineService {
 }
 
 public GetDeadlineEjerforhold(ejerforhold: string): Observable<EjerforholdDeadline[]> {
-    const url = this.baseUrl +  'dimp/deadline/' +ejerforhold;
+    const url = this.baseUrl +  'kontakter-api/api/Deadlines?ejerforhold=' +ejerforhold;
 
     return  this.http.get<EjerforholdDeadline[]>(url).pipe();
 }
@@ -29,8 +29,8 @@ public GetDeadlineEjerforhold(ejerforhold: string): Observable<EjerforholdDeadli
   public  Post(deadline: Deadline): Observable<any>{
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'});
-    const  url = this.baseUrl + 'deadline/';
-    return  this.http.post(url, JSON.stringify(deadline), {headers: headers});
+    const  url = this.baseUrl + 'kontakter-api/api/Deadlines';
+    return  this.http.post(url, JSON.stringify(deadline), {headers: headers}).pipe();
 
   }
 

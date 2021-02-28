@@ -18,7 +18,7 @@
         <option selected value="{{l.Uge}}">{{l.Uge}}</option>
         <option *ngFor="let w of weeks" value="{{w.id}}">{{w.weeknumber}}</option>
       </select></td>
-      <td><input type="checkbox" value="{{l.UdkommerIkke}}" id="udkommer{{l.Linje}}" (click)="udkommer($event)" ></td>
+      <td><input type="checkbox" value="{{l.UdkommerIkke}}" id="udkommer{{l.Linje}}" (click)="udkommer($event, l)" ></td>
       <td><select id="UdGivelsesDato{{l.Linje}}" (change)="selectUdGivelsesDato($event, l)">
         <option selected value="{{l.UdgivelsesDato}}">{{l.UdgivelsesDato}}</option>
         <option *ngFor="let d of dates" value="{{d.id}}">{{d.date}}</option>
@@ -49,10 +49,11 @@
 
   </table>
 
-  <div>
-    <button (click)="update(d)">Opgrader</button>
-  </div>
+
 </div>
+  <div>
+    <button (click)="update()">Opgrader</button>
+  </div>
   <div>
     <table >
 

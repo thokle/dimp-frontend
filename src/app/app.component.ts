@@ -4,6 +4,7 @@ import {Component, NgZone, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterState, RouterStateSnapshot} from "@angular/router";
 import {tokenReference} from "@angular/compiler";
 import {valueReferenceToExpression} from "@angular/compiler-cli/src/ngtsc/annotations/src/util";
+import {KontakterComponent} from "./kontakter/kontakter.component";
 
 @Component({
   selector: 'app-root',
@@ -20,10 +21,10 @@ export class AppComponent implements  OnInit {
  email = '';
  mediePlanNr;
   stamBladEmail: any;
-  bladid;
+
   type;
   isAnnoncekontrol= false;
-name= "";
+
   value2: any;
   ejerforhold: any;
   isEjerforhold: boolean = false;
@@ -33,9 +34,14 @@ name= "";
 
 
 
-  }
+
+    }
 
   ngOnInit(): void {
+
+
+
+    /*
     this.activeRouter.queryParamMap.pipe( ).subscribe(value => {
 
 
@@ -44,14 +50,27 @@ name= "";
         this.stamBladEmail = encodeURI(value.get('email'));
         console.log('App Email  ' + this.stamBladEmail);
         this.isPriser = true;
+
+        this.isEjerforhold = false;
         this.isKomtakter = false;
+        this.isEjerforhold = false;
+        this.isPriser= false;
+        this.isDeadLine2 = false;
+        this.isDeadline1 = false;
+        this.isAnnoncekontrol = false;
         this.isEjerforhold = false;
       } else  if(value.has('bladid')){
 
         this.bladid =  Number(value.get('bladid'));
         console.log(this.bladid);
         this.isPriser = false;
-        this.isKomtakter = true;
+        this.isKomtakter = false;
+        this.isEjerforhold = false;
+        this.isPriser= false;
+
+        this.isDeadLine2 = false;
+        this.isDeadline1 = false;
+        this.isAnnoncekontrol = false;
         this.isEjerforhold = false;
       } else if (value.has('deadlines')){
         this.bladid = Number(value.get('deadlines'));
@@ -60,6 +79,7 @@ name= "";
         this.isDeadLine2 = false;
         this.isDeadline1 = true;
         this.isEjerforhold = false;
+        this.isKomtakter = false;
       }
       else if (value.has('deadlines2')){
         this.bladid = Number(value.get('deadlines2'));
@@ -78,7 +98,7 @@ name= "";
         this.isAnnoncekontrol = true;
         this.isEjerforhold = false;
       } else  if(value.has('kontakt')){
-        this.name  = value.get('kontakt');
+        this.bladid  = value.get('kontakt');
 
         this.isPriser= false;
         this.isKomtakter  = true;
@@ -96,7 +116,7 @@ name= "";
         this.isEjerforhold = true;
       }
 
-    });
+    });*/
 
 
   }

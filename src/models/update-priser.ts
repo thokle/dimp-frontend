@@ -13,6 +13,7 @@ export interface PriceWeb {
   Farve4Min: number;
   Farve4Max: number;
   ControlNavn: string;
+  ErMeldInd: boolean;
 }
 
 export interface Price {
